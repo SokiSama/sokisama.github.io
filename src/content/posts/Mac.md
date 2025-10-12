@@ -1,5 +1,5 @@
 ---
-title: Markdown Extended Features
+title: macOS环境下使用Hexo搭建个人博客
 published: 2024-05-01
 updated: 2024-11-29
 description: 'Read more about Markdown features in Mizuki'
