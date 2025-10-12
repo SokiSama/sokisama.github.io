@@ -1,20 +1,13 @@
 ---
-title: macOS环境下使用Hexo搭建个人博客
-published: 2025-10-12
-pinned: false
-description: 让你在macOS环境下也能轻松的搭建博客
-tags: [博客, 建站]
-category: macOS
-#licenseName: "Unlicensed"
-author: Soki
-#sourceLink: "https://github.com/emn178/markdown"
-#draft: false
-#date: 2025-01-20
-image:
-  url: 'https://p.ipic.vip/ptpggv.png'
-  alt: '图片描述'
-pubDate: 2025-01-20
-#
+title: Markdown Extended Features
+published: 2024-05-01
+updated: 2024-11-29
+description: 'Read more about Markdown features in Mizuki'
+image: ''
+tags: [Demo, Example, Markdown, mizuki]
+category: 'Examples'
+draft: false 
+series: "Mizuki"
 ---
 <aside>
 🔰
