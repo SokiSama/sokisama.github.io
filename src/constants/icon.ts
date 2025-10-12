@@ -1,12 +1,5 @@
 import type { Favicon } from "@/types/config.ts";
 
-export const iconMap = {
-  // 现有图标...
-  
-  // 添加新图标
-  Steam: 'i-mdi:steam',
-};
-
 export const defaultFavicons: Favicon[] = [
 	{
 		src: "/favicon/favicon-light-32.png",

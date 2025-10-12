@@ -264,12 +264,6 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:discord",
 			url: "https://discord.gg/z7DUrw4M",
 		},
-		//手动添加个steam图标试试
-				{
-					name: "Steam",
-					icon:"i-mdi:steam",
-					url:"https://steamcommunity.com/id/SokiSama/",
-				},
 	],
 };
 
