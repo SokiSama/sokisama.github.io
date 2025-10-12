@@ -2,7 +2,7 @@
 title: macOS环境下使用Hexo搭建个人博客
 published: 2025-10-09
 updated: 2025-10-12
-description: 'Read more about Markdown features in Mizuki'
+description: '这个教程将教你如何去在macOS环境下，搭建一个blog'
 image: ''
 tags: [建站, 博客, Markdown]
 category: '建站'
