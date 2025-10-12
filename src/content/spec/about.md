@@ -1,15 +1,12 @@
 # 这里是Soki的主页
 
-这个网站的运行基于 **Astro** 框架 ，使用 [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 主题.
-目前运行在GitHub服务器上，使用Github Actions进行托管。未来会考虑墙内用户转移到Aliyun
-
 ## 🌟 关于我
 你好，可以叫我 露比，砂糖，Soki
 
 ### 🏠 自己紹介
 测试工程师
 VRChat玩家
-otaku
+御宅族
 
 ### ❤️ 我喜欢
 打游戏
