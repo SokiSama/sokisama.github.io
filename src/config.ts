@@ -245,7 +245,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "松坂 さとう",
-	bio: "欢迎来到我的博客，这里是分享个人生活与并不高级的技术的地方。也会发一些动漫相关。",
+	bio: "彼女の愛は、甘くて痛い",
 	links: [
 		{
 			name: "Bilibli",
@@ -287,12 +287,12 @@ export const commentConfig: CommentConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "Announcement", // 公告标题
-	content: "Welcome to my blog! This is a sample announcement.", // 公告内容
+	title: "公告", // 公告标题
+	content: "欢迎来到我的博客，这里是分享个人生活与并不高级的技术的地方。也会发一些动漫相关。", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
-		text: "Learn More", // 链接文本
+		text: "了解更多", // 链接文本
 		url: "/about/", // 链接 URL
 		external: false, // 内部链接
 	},
