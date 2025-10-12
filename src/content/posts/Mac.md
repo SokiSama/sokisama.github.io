@@ -1,16 +1,15 @@
 ---
 title: macOS环境下使用Hexo搭建个人博客
-published: 2024-05-01
-updated: 2024-11-29
+published: 2025-10-09
+updated: 2025-10-12
 description: 'Read more about Markdown features in Mizuki'
 image: ''
-tags: [Demo, Example, Markdown, mizuki]
-category: 'Examples'
+tags: [建站, 博客, Markdown]
+category: '建站'
 draft: false 
 series: "Mizuki"
 ---
 <aside>
-🔰
 
 写这篇教程的时候我还在用Hexo，现在转到Astro真香。但还是想把这个教程po上去。一方面是以后打算弄个朴素点的给外人看，另一方面是ntr（
 
@@ -119,7 +118,7 @@ ssh-keygen -t rsa -C "example@example.com"
 
 打开[GitHub_Settings_keys](https://github.com/settings/keys) 页面，新建New SSH Key，Title随意填，Key就把刚才复制的内容全都粘贴上去。然后点Add SSH Key即可。Key type不用管，默认即可
 
-![iShot_2025-10-12_10.35.49 AM.png](attachment:e278bf4a-a403-4927-8973-0451ede7ea88:iShot_2025-10-12_10.35.49_AM.png)
+![iShot_2025-10-12_10.35.49 AM.png](https://p.ipic.vip/9j4zzg.png)
 
 新增成功后，在终端用下面的命令试下成功没有
 
