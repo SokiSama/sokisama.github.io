@@ -195,6 +195,13 @@ export const navBarConfig: NavBarConfig = {
 					external: true,
 					icon: "fa6-brands:bilibili",
 				},
+				//手动添加个steam图标试试
+				{
+					name: "Steam",
+					url:"https://steamcommunity.com/id/SokiSama/",
+					external:true,
+					icon:"cib:steam",
+				},
 			],
 		},
 		{
