@@ -29,7 +29,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 export default defineConfig({
 	site: "https://sokisama.github.io/",
 
-	base: "my-repo",
+	base: "/",
 	trailingSlash: "always",
 	integrations: [
 		tailwind({
