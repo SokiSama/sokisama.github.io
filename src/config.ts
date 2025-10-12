@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	banner: {
-		enable: false, // 是否启动Banner壁纸模式
+		enable: true, // 是否启动Banner壁纸模式
 
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
 				/*"/assets/desktop-banner/d1.webp",
 				"/assets/desktop-banner/d2.webp",
 				"/assets/desktop-banner/d3.webp",*/
-				/* "/assets/desktop-banner/d4.webp",*/
+				 "/assets/desktop-banner/d4.webp",
 				/*"/assets/desktop-banner/d5.webp",
 				"/assets/desktop-banner/d6.webp",
 				"/assets/desktop-banner/d7.webp",
@@ -67,7 +67,7 @@ export const siteConfig: SiteConfig = {
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
-		position: "top", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
+		position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
 
 		carousel: {
 			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
@@ -139,7 +139,7 @@ export const siteConfig: SiteConfig = {
 	showLastModified: true, // 控制“上次编辑”卡片显示的开关
 };
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
-	enable: true, // 启用全屏壁纸功能,非Banner模式下生效
+	enable: false, // 启用全屏壁纸功能,非Banner模式下生效
 	src: {
 		desktop: [
 			/*"/assets/desktop-banner/d1.webp",
@@ -451,7 +451,7 @@ export const sakuraConfig: SakuraConfig = {
 
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: true, // 启用看板娘
+	enable: false, // 启用看板娘
 	models: ["/pio/models/pio/model.json"], // 默认模型路径
 	position: "left", // 默认位置在右侧
 	width: 280, // 默认宽度
