@@ -267,8 +267,8 @@ export const profileConfig: ProfileConfig = {
 		//手动添加个steam图标试试
 				{
 					name: "Steam",
-					url:"https://steamcommunity.com/id/SokiSama/",
 					icon:"i-cib:steam",
+					url:"https://steamcommunity.com/id/SokiSama/",
 				},
 	],
 };

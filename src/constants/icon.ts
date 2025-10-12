@@ -41,4 +41,12 @@ export const defaultFavicons: Favicon[] = [
 		theme: "dark",
 		sizes: "192x192",
 	},
+	
+
 ];
+export const iconMap = {
+  // 现有图标...
+  
+  // 添加新图标
+  'Steam': 'i-cib:steam'
+};
