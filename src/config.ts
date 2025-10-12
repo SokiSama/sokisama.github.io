@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	banner: {
-		enable: true, // 是否启动Banner壁纸模式
+		enable: false, // 是否启动Banner壁纸模式
 
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
@@ -142,14 +142,14 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	enable: true, // 启用全屏壁纸功能,非Banner模式下生效
 	src: {
 		desktop: [
-			"/assets/desktop-banner/d1.webp",
+			/*"/assets/desktop-banner/d1.webp",
 			"/assets/desktop-banner/d2.webp",
-			"/assets/desktop-banner/d3.webp",
+			"/assets/desktop-banner/d3.webp",*/
 			"/assets/desktop-banner/d4.webp",
-			"/assets/desktop-banner/d5.webp",
+			/*"/assets/desktop-banner/d5.webp",
 			"/assets/desktop-banner/d6.webp",
 			"/assets/desktop-banner/d7.webp",
-			"/assets/desktop-banner/d8.webp",
+			"/assets/desktop-banner/d8.webp",*/
 		], // 桌面横幅图片
 		mobile: [
 			"/assets/mobile-banner/m1.webp",
