@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
 				/*"/assets/desktop-banner/d1.webp",
 				"/assets/desktop-banner/d2.webp",
 				"/assets/desktop-banner/d3.webp",*/
-				"/assets/desktop-banner/d4.webp",
+				/* "/assets/desktop-banner/d4.webp",*/
 				/*"/assets/desktop-banner/d5.webp",
 				"/assets/desktop-banner/d6.webp",
 				"/assets/desktop-banner/d7.webp",
@@ -67,7 +67,7 @@ export const siteConfig: SiteConfig = {
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
-		position: "bottom", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
+		position: "top", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
 
 		carousel: {
 			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
@@ -91,7 +91,6 @@ export const siteConfig: SiteConfig = {
 			subtitle: [
 				"可愛くてごめん",
 				"東の空から始まる世界",
-				"願い あの頃のキミへ～",
 				"曇り空の向こうは晴れている",
 			],
 			typewriter: {
@@ -104,9 +103,9 @@ export const siteConfig: SiteConfig = {
 		},
 
 		credit: {
-			enable: false, // 显示横幅图片来源文本
+			enable: true, // 显示横幅图片来源文本
 
-			text: "Describe", // 要显示的来源文本
+			text: "/assets/desktop-banner/d4.webp", // 要显示的来源文本
 			url: "", // （可选）原始艺术品或艺术家页面的 URL 链接
 		},
 
@@ -131,10 +130,10 @@ export const siteConfig: SiteConfig = {
 	// 字体配置
 	font: {
 		zenMaruGothic: {
-			enable: true, // 启用全局圆体适合日语和英语，对中文适配一般
+			enable: false, // 启用全局圆体适合日语和英语，对中文适配一般
 		},
 		hanalei: {
-			enable: false, // 启用 Hanalei 字体作为全局字体，适合中文去使用
+			enable: true, // 启用 Hanalei 字体作为全局字体，适合中文去使用
 		},
 	},
 	showLastModified: true, // 控制“上次编辑”卡片显示的开关
