@@ -204,7 +204,7 @@ export const navBarConfig: NavBarConfig = {
 		{
 			name: "我的",
 			url: "/content/",
-			icon: "material-symbols-light:cast-connected-sharp",
+			icon: "material-symbols:person",
 			children: [
 				LinkPreset.Anime,
 				LinkPreset.Diary,
