@@ -203,7 +203,7 @@ export const navBarConfig: NavBarConfig = {
 		{
 			name: "我的",
 			url: "/content/",
-			icon: "material-symbols:person",
+			icon: "material-symbols:android-wifi-3-bar-plus",
 			children: [
 				LinkPreset.Anime,
 				LinkPreset.Diary,
