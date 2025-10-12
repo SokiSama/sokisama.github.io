@@ -1,7 +1,7 @@
 # 这里是Soki的主页
 
-T这个网站的运行基于 **Astro** 框架 ，使用 [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 主题.
-
+这个网站的运行基于 **Astro** 框架 ，使用 [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 主题.
+目前运行在GitHub服务器上，使用Github Actions进行托管。未来会考虑墙内用户转移到Aliyun（咕咕咕）
 
 ## 🌟 关于我
 
@@ -33,13 +33,10 @@ T这个网站的运行基于 **Astro** 框架 ，使用 [Mizuki](https://github.
 - **ガルパ** - 臭打音游的，白嫖一百多个四星五星不舍得退游
 
 
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+### ☁️ 还有一些不方便写list的
+喜欢吃好吃的，也喜欢一个人四处溜达。对自己喜欢的事情可以付出大量的精力与时间去研究它。
+尽管过去的自己是多么的不堪与堕落。但是只要有一颗热爱自己喜欢事物的心，一切不好都会被强行覆盖的。
 
 ---
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+*"The day before yesterday I saw a rabbit, and yesterday I saw a deer, and today you."❤️ *
