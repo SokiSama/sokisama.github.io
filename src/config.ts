@@ -195,13 +195,7 @@ export const navBarConfig: NavBarConfig = {
 					external: true,
 					icon: "fa6-brands:bilibili",
 				},
-				//手动添加个steam图标试试
-				{
-					name: "Steam",
-					url:"https://steamcommunity.com/id/SokiSama/",
-					external:true,
-					icon:"cib:steam",
-				},
+				
 			],
 		},
 		{
@@ -270,6 +264,12 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:discord",
 			url: "https://discord.gg/z7DUrw4M",
 		},
+		//手动添加个steam图标试试
+				{
+					name: "Steam",
+					url:"https://steamcommunity.com/id/SokiSama/",
+					icon:"i-cib:steam",
+				},
 	],
 };
 
