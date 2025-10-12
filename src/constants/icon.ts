@@ -48,5 +48,5 @@ export const iconMap = {
   // 现有图标...
   
   // 添加新图标
-  'Steam': 'icon-library:icon-name'
+  'Steam': 'i-mdi:steam'
 };
