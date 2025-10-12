@@ -1,42 +1,37 @@
-# About This Site
+# 这里是Soki的主页
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/matsuzaka-yuki/mizuki) theme.
-
-::github{repo="matsuzaka-yuki/Mizuki"}
-
-## 🌟 Theme Features
-
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
-
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
+T这个网站的运行基于 **Astro** 框架 ，使用 [Mizuki](https://github.com/matsuzaka-yuki/mizuki) 主题.
 
 
+## 🌟 关于我
 
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
+### 🏠 个人情况
+- **社畜** - 目前是测试工程师，接触这个网站让我重新捡起前端。但我不会再给公司写代码。
+- **肥宅** - 足不出户，南条一瘫。除了上班和偶尔出门放纵自己，基本上都是宅在家里。
+- **果粉** - 这个项目运行在macmini M4丐版上，组了个不算太好用但还算顺手的Apple生态。
+- **姐控** - 如果一定要扯一些感情了话，我希望另一半是姐姐。生理心理方面均可。
+- **死宅** - 有一套房，被我打造成了三月兽mini。只要是我喜欢的，有闲钱都会买下来收藏。
 
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
+### 🖥️ 我喜欢玩什么游戏 【PC端】
+- **最终幻想14** - 退游无数次又忍不住回坑的游戏。现在是高难一点也不碰，日随导随人。
+- **VRChat** - 赛博美少女启动器，现在上线很少了。最多去挂机看看老朋友或者唱歌。
+- **CS2** - 玩了快十年了，已经跟不上枪了。和朋友开黑的时候会玩两把。
+- **Overwatch 2** - 国际服玩家，主要是喜欢那几个美少女的皮肤。雾子俺的嫁）
+- **Battlefiled 系列** - 赛博医疗兵，主打一个气氛组。kd无所谓，就说等待复活难受。
+
+
+### 🎮 我喜欢玩什么游戏 【主机端】
+- **Persona 系列** - ATLUS最忠实的*，年年骂年年买，问就是好玩但是太贵。
+- **黑神话：悟空** - 国产之光，打击感与音乐深得我心。在美术和剧情方面也丝毫不逊色
+- **The Last of Us™ Part I** - 电影化叙事游戏的神
+- **Cyberpunk 2077** - 我们永不消逝
+- **十三机兵防卫圈** - 笑点 & 燃点 十足的独立游戏，只有香草社才能做出来的类型。
+
+### 📱 我喜欢玩什么游戏 【移动端】
+- **崩坏：星穹铁道** -  P系代餐，开服玩了下感觉剧情福利都比原神好。现在也开始膨胀了，半退游
+- **鸣潮** - 我还是那句话，这不比原神强？就是玩不动了已经
+- **ガルパ** - 臭打音游的，白嫖一百多个四星五星不舍得退游
+
 
 ### 🎯 Advanced Markdown Features
 - **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
