@@ -177,6 +177,8 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
+		LinkPreset.About,
+		LinkPreset.Friends,
 		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		/*{
 			name: "Links",
@@ -200,26 +202,27 @@ export const navBarConfig: NavBarConfig = {
 		},
 		*/
 		{
-			name: "My",
+			name: "我的",
 			url: "/content/",
 			icon: "material-symbols:person",
 			children: [
 				LinkPreset.Anime,
 				LinkPreset.Diary,
 				{
-					name: "Gallery",
+					name: "相册",
 					url: "/albums/",
 					icon: "material-symbols:photo-library",
 				},
 			],
 		},
-		{
-			name: "About",
+		/*{
+			name: "关于",
 			url: "/content/",
 			icon: "material-symbols:info",
 			children: [LinkPreset.About, LinkPreset.Friends],
 		},
-		{
+		*/
+		/*{
 			name: "Others",
 			url: "#",
 			icon: "material-symbols:more-horiz",
@@ -240,7 +243,7 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:timeline",
 				},
 			],
-		},
+		},*/
 	],
 };
 
