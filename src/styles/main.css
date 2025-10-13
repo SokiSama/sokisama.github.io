@@ -26,6 +26,18 @@
 	font-display: swap;
 }
 
+/*导入 思源黑体 字体 */
+@font-face {
+    font-family: 'SourceHanSans';
+    src: url('/assets/font/SourceHanSans.ttf') format('truetype');
+    font-weight: normal;
+    font-display: swap;
+}
+
+.source-han-sans-enabled {
+    font-family: 'SourceHanSans', system-ui, sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

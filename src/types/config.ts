@@ -27,7 +27,7 @@ export type SiteConfig = {
 		zenMaruGothic: {
 			enable: boolean; // 是否使用 ZenMaruGothic-Black 作为全局字体
 		};
-		hanalei: {
+		sourceHanSans: {
 			enable: boolean; // 是否使用 Hanalei 作为全局字体
 		};
 	};
