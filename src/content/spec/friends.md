@@ -14,7 +14,7 @@
 
 > 标题: "SatouのBlog"
 >
-> 头像: "https://github.com/SokiSama/picked/blob/main/b_14dbf6b3bbe6b5034c09d69e02e608f4.jpg?raw=true"
+> 头像: "https://github.com/SokiSama/picked/blob/main/avatar.jpg?raw=true"
 >
 > 描述: "彼女の愛は、甘くて痛い"
 >
