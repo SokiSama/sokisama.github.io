@@ -121,31 +121,5 @@ Sonos Submini
 
 Sonos Ear 100*2
 
-> **笔电**
-
-
-Asus 天选 Air 32+1T
-
-
-MacBook Air M4 16+256G
-
-
-COMPAQ Presario V2000
-
-> **台式**
-
-Mac mini M4 16+256G
-
-AMD Ryzen 9 9800X3D
-
-ASUS ROG STRIX X870-A GAMING WIFI BTF 吹雪
-
-NVIDIA GeForce RTX 5080
-
-ADATA 48G*2 DDR5 6400
-
-ZhiTai 2T SSD *2 + Predator 4T SSD
-
-Seagate Barracuda Pro 4TB 7200RPM HDD
 
 
