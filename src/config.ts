@@ -177,6 +177,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		LinkPreset.Friends,
+		LinkPreset.Anime,
 		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		/*{
 			name: "Links",
@@ -199,7 +200,8 @@ export const navBarConfig: NavBarConfig = {
 			],
 		},
 		*/
-		{
+		
+		/*{
 			name: "我的",
 			url: "/content/",
 			icon: "material-symbols:android-wifi-3-bar-plus",
@@ -212,7 +214,8 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:photo-library",
 				},
 			],
-		},
+		},*/
+
 		/*{
 			name: "关于",
 			url: "/content/",
