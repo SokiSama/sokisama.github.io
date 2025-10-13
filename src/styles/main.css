@@ -7,7 +7,7 @@
 @import './animation-enhancements.css';
 /* 加密内容样式已移除，现在直接使用非加密文章的样式 */
 
-/* 导入 ZenMaruGothic-Medium 字体 */
+/*导入 ZenMaruGothic-Medium 字体 */
 @font-face {
   font-family: 'ZenMaruGothic-Medium';
   src: url('/assets/font/ZenMaruGothic-Medium.ttf') format('truetype');
@@ -15,9 +15,7 @@
   font-display: swap;
 }
 
-
-
-/* 导入 Hanalei 字体 */
+/* 导入 Hanalei 字体 
 @font-face {
 	font-family: "Hanalei";
 	src: url("/assets/font/Hanalei.woff2") format("woff2");
@@ -25,6 +23,7 @@
 	font-weight: 400;
 	font-display: swap;
 }
+*/
 
 /*导入 思源黑体 字体 */
 @font-face {
@@ -33,7 +32,6 @@
     font-weight: normal;
     font-display: swap;
 }
-
 .source-han-sans-enabled {
     font-family: 'SourceHanSans', system-ui, sans-serif;
 }

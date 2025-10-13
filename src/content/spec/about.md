@@ -5,19 +5,31 @@
 
 ### 🏠 自己紹介
 测试工程师
+
+
 VRChat玩家
+
+
 御宅族
 
 ### ❤️ 我喜欢
 打游戏
+
+
 看番
+
+
 买周边
+
+
 听歌
 
 ### ☁️ 碎碎念
-对自己喜欢的事情可以付出大量的精力与时间去研究它。
-尽管过去的自己是多么的不堪与堕落。但是只要有一颗热爱自己喜欢事物的心，一切不好都会被强行覆盖的。
+愿我们有一天能与重要之人相遇。
+
+
+希望大家能天天快乐。
 
 ---
 
-The day before yesterday I saw a rabbit, and yesterday I saw a deer, and today you.❤️ 
+🛜 此网站由GitHub Action构建，Vercel托管。 

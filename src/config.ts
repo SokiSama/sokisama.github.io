@@ -89,14 +89,12 @@ export const siteConfig: SiteConfig = {
 			title: "神々が恋した幻想郷", // 主页横幅主标题
 
 			subtitle: [
-				"可愛くてごめん",
-				"東の空から始まる世界",
-				"曇り空の向こうは晴れている",
+				"倾听，感受，思考。",
 			],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
 
-				speed: 100, // 打字速度（毫秒）
+				speed: 300, // 打字速度（毫秒）
 				deleteSpeed: 50, // 删除速度（毫秒）
 				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
 			},
@@ -130,10 +128,10 @@ export const siteConfig: SiteConfig = {
 	// 字体配置
 	font: {
 		zenMaruGothic: {
-			enable: true, // 启用全局圆体适合日语和英语，对中文适配一般
+			enable: false, // 启用全局圆体适合日语和英语，对中文适配一般
 		},
 		sourceHanSans: {
-			enable: true, // 启用 Hanalei 字体作为全局字体，适合中文去使用
+			enable: true, // 启用 思源黑体 字体作为全局字体，适合中文去使用
 		},
 		
 	},
@@ -253,9 +251,9 @@ export const profileConfig: ProfileConfig = {
 	bio: "彼女の愛は、甘くて痛い",
 	links: [
 		{
-			name: "Bilibli",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/4686881",
+			name: "Spotify",
+			icon: "fa6-brands:spotify",
+			url: "https://open.spotify.com/user/bm2gkfjrtce2t5n04vowsyfsd",
 		},
 		
 		{
@@ -264,9 +262,9 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/SokiSama",
 		},
 		{
-			name: "Discord",
-			icon: "fa6-brands:discord",
-			url: "https://discord.gg/z7DUrw4M",
+			name: "Telegram",
+			icon: "fa6-brands:telegram",
+			url: "https://t.me/satoushiro",
 		},
 		{
 			name: "Steam",
