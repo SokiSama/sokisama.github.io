@@ -86,7 +86,7 @@ export const siteConfig: SiteConfig = {
 
 		homeText: {
 			enable: true, // 在主页显示自定义文本
-			title: "Soki的部落格", // 主页横幅主标题
+			title: "", // 主页横幅主标题
 
 			subtitle: [
 				"倾听，感受，思考",
@@ -255,9 +255,9 @@ export const profileConfig: ProfileConfig = {
 	bio: "彼女の愛は、甘くて痛い",
 	links: [
 		{
-			name: "Spotify",
-			icon: "fa6-brands:spotify",
-			url: "https://open.spotify.com/user/bm2gkfjrtce2t5n04vowsyfsd",
+			name: "",
+			icon: "fa6-solid:mug-hot",
+			url: "mailto:sokisama0@gmail.com",
 		},
 		
 		{
@@ -300,7 +300,7 @@ export const commentConfig: CommentConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "公告", // 公告标题
-	content: "欢迎来到我的博客，这里是分享个人生活与并不高级的技术的地方。也会发一些动漫相关。", // 公告内容
+	content: "欢迎来到我的博客，这里是分享个人生活与并不高级的技术的地方。", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接

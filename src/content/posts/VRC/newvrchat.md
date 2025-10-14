@@ -16,9 +16,9 @@ draft: false
 
 # 分享一下总体思路
 
-激活设备 ➡️ 下载 [Virtual Desktop](https://www.vrdesktop.net/) ➡️ 串流到电脑 ➡️ 游玩
+激活设备 ➡️ 下载 [**Virtual Desktop](https://www.vrdesktop.net/) ➡️** 串流到电脑 ➡️ 游玩
 
-首先从最基础的购买设备开始，目前市面上能够选择价格亲民级别的VR设备有两款主流：Pico和Quset。有关设备的选择请参考各家up主，这里不再赘述。本文主要以Quest设备为主。
+首先从最基础的购买设备开始，目前市面上能够选择价格亲民级别的VR设备有两款主流：Pico和Quset。有关设备的选择请参考各家up主，本文不再赘述。本文主要以Quest设备为主。
 
 # 设备相关
 
@@ -28,7 +28,7 @@ draft: false
 
 检查原封包装，无坏点后，就可以开始激活了。
 
-![iShot_2025-10-14_11.36.37 AM.png](https://p.ipic.vip/jdn2pa.png)
+![iShot_2025-10-14_11.36.37 AM.png](https://p.ipic.vip/624qv0.png)
 
 ## 激活
 
@@ -57,9 +57,13 @@ draft: false
 
 首先确保你电脑是开着Wi-Fi的，最好也插个网线。要玩VRC那就要依赖Steam VR，打开你的Steam，下载Steam VR和VRChat。
 
-之后在PC端打开VD，在 ACCOUNTS 的 Username 输入你Quest的用户名，不知道就在头显里打开设置看。
+之后在PC端打开VD，在 ACCOUNTS 的 Meta Username 输入你Quest的用户名，不知道就在头显里打开设置看。
 
-然后在 OPTIONS 的 Preferred Codec 选择 AV1 10-bit （Quest3） 。右边的Automatically adjust bitrate关了，那是自动码流不要开。
+![QQ20251014-175713.png](https://p.ipic.vip/ywmr9y.png)
+
+然后在 OPTIONS 的 Preferred Codec 选择 AV1 10-bit （Quest3） 。右边的Automatically adjust bitrate关了，那是自动码流不要开。其他按需要配置
+
+![VirtualDesktop.Streamer_wjPezX86pa.png](https://p.ipic.vip/6xda9q.png)
 
 最后在 STREAMING 的 VR Graphics Quality，根据你电脑配置选串流画面质量。VR Frame Rate 选你能接受的刷新率，至此PC端就设置完成了。
 
@@ -69,6 +73,8 @@ draft: false
 
 手柄选择左下角的Launch SteamVR，稍等片刻就串流到SteamVR了。选择VRChat，启动！
 
+![start_protected_game_HfxbzIsEeX.png](https://p.ipic.vip/5httsm.png)
+
 > VRC理论上是可以裸连的，走日本服务器，但为了更好的游玩体验还是准备一个良好的网络环境。一般都是UU加速器。梯子也可以，如果你流量够多。
 > 
 
@@ -76,14 +82,22 @@ draft: false
 
 登录方式默认选Steam，先一键创建个账号，同意协议，等待一会就会传送到VRChat Home。默认用户名是你 Steam名称 + 一串字母数字。账号是游客。后续我会讲怎么合并账号。
 
+![Discord_86W1X8sm8N.png](https://p.ipic.vip/dzuaxu.png)
+
 移动方法：左手柄摇杆控制左右，右手柄摇杆控制前后。觉得有些晕右面有类似Alex那种点按移动可以选择。
 
+![Discord_8hRUlGtGSN.jpg](https://p.ipic.vip/e0a3xy.jpg)
+
 往前走有一面镜子，能看到你自己。默认是机器人模型。首先在初始房四处转转，看看自己晕不晕，熟悉一下环境。
+
+![Photos_QFMvjz5iqu.jpg](https://p.ipic.vip/4mo089.jpg)
 
 至此欢迎来到VRChat的世界，之后我会讲怎么去换模型，萌新怎么去换房间，merge官方账号脱离游客身份等操作。
 
 # 结语
 
 Quest最大的缺点就是在大陆上手难度高，很多人卡在了激活这里。所以只建议有一定动手能力的玩家购买。如果你感到眩晕，请注意休息。必要时请服用缓解眩晕的药物。
+
+为了方便演示，游戏截图采用的是PC模式下的，实际体验以VR为准
 
 希望这篇文章能让你对如何串流玩VRChat有一个初步的了解。

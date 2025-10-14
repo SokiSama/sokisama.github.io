@@ -5,9 +5,10 @@ import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-
+import TwikooComment from '../components/comment/Twikoo.astro';
 const friendsPost = await getEntry("spec", "friends");
-
+//twikko envid
+const envId = "https://sweet-moonbeam-d0178d.netlify.app/.netlify/functions/twikoo";
 if (!friendsPost) {
 	throw new Error("friends page content not found");
 }
@@ -102,6 +103,10 @@ const shuffledItems = shuffleArray(items);
             <Markdown class="mt-2">
                 <Content />
             </Markdown>
+
+             
+            <TwikooComment envId={envId} />
         </div>
+       
     </div>
 </MainGridLayout>

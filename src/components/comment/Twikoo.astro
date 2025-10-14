@@ -1,6 +1,10 @@
 ---
 import { commentConfig } from "@/config";
 
+
+// ...其他的导入
+
+
 interface Props {
 	path: string;
 }
@@ -12,7 +16,10 @@ const config = {
 };
 ---
 
-<div id="tcomment"></div>
+
+<div id="tcomment">
+  
+</div>
 <script is:inline src="/scroll-protection.js"></script>
 <script is:inline src="/assets/js/twikoo.all.min.js"></script>
 <script is:inline define:vars={{ config }}>
