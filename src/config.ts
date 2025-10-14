@@ -86,17 +86,18 @@ export const siteConfig: SiteConfig = {
 
 		homeText: {
 			enable: true, // 在主页显示自定义文本
-			title: "神々が恋した幻想郷", // 主页横幅主标题
+			title: "Soki的部落格", // 主页横幅主标题
 
 			subtitle: [
-				"倾听，感受，思考。",
+				"倾听，感受，思考",
+				"阴云彼端，晴空依然"
 			],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
 
 				speed: 300, // 打字速度（毫秒）
 				deleteSpeed: 50, // 删除速度（毫秒）
-				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
+				pauseTime: 1000, // 完全显示后的暂停时间（毫秒）
 			},
 		},
 
@@ -290,10 +291,10 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	twikoo: {
-		envId: "https://twikoo.vercel.app",
-		lang: "en", // 设置 Twikoo 评论系统语言为英文
+		envId: "https://matsuzakasatou-twikoo.hf.space", // Twikoo 实例地址
+		lang: "zh-CN", // 设置 Twikoo 评论系统语言为英文
 	},
 };
 

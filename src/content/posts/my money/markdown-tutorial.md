@@ -12,6 +12,9 @@ sourceLink: ""
 draft: false
 ---
 
+> 不定时更新
+>
+
 # 实体版galgame
 
 > **基本上都是闲鱼买的，少数淘宝代购**
@@ -73,11 +76,6 @@ Happy Sugar Life
 
 # 电子设备
 
-> **手机**
-
-
-iPhone 16 Pro 
-
 
 iPhone 8 Plus 
 
@@ -103,23 +101,6 @@ Microsoft Lumia 640XL
 
 Sumikko Gurashi A303ZT
 
-> **其他**
-
-Meta Quest 3
-
-Steam Deck OLED
-
-iPad Pro 2024 11‘
-
-Playstation 5 Pro
-
-Nintendo Switch 2
-
-Sonos Beam
-
-Sonos Submini
-
-Sonos Ear 100*2
 
 
 
