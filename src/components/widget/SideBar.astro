@@ -7,11 +7,14 @@ import MusicPlayer from "./MusicPlayer.svelte";
 import Profile from "./Profile.astro";
 import Tags from "./Tags.astro";
 import TOC from "./TOC.astro";
+import BlogStats from './BlogStats.astro'; // 新增
 
 interface Props {
 	class?: string;
 	headings?: MarkdownHeading[];
 }
+
+
 
 const { class: className, headings } = Astro.props;
 
@@ -25,6 +28,7 @@ const componentMap = {
 	announcement: Announcement,
 	categories: Categories,
 	tags: Tags,
+	blogStats: BlogStats, // 新增这一行
 	toc: TOC,
 	"music-player": MusicPlayer,
 };

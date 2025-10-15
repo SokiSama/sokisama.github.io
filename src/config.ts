@@ -402,7 +402,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		{
  			type: "blogStats",
  			enable: true,
-  			order: 2, // 个人资料 order:1
+  			order: 6, // 个人资料 order:1
   			position: "sticky",
   			class: "onload-animation",
   			animationDelay: 100,
