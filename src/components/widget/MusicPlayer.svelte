@@ -12,7 +12,7 @@ import Key from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 
 // 音乐播放器模式，可选 "local" 或 "meting"，从本地配置中获取或使用默认值 "meting"
-let mode = musicPlayerConfig.mode ?? "meting";
+let mode = musicPlayerConfig.mode ?? "local";
 // Meting API 地址，从配置中获取或使用默认地址(bilibili.uno(由哔哩哔哩松坂有希公益管理)),服务器在海外,部分音乐平台可能不支持并且速度可能慢,也可以自建Meting API
 let meting_api =
 	musicPlayerConfig.meting_api ??
@@ -68,28 +68,44 @@ let volumeBar: HTMLElement;
 const localPlaylist = [
 	{
 		id: 1,
-		title: "ひとり上手",
-		artist: "Kaya",
+		title: "運命の旅",
+		artist: "祖堅正慶",
 		cover: "assets/music/cover/hitori.jpg",
 		url: "assets/music/url/hitori.mp3",
 		duration: 240,
 	},
 	{
 		id: 2,
-		title: "眩耀夜行",
-		artist: "スリーズブーケ",
+		title: "SWEET HURT",
+		artist: "ReoNa",
 		cover: "assets/music/cover/xryx.jpg",
 		url: "assets/music/url/xryx.mp3",
 		duration: 180,
 	},
 	{
 		id: 3,
-		title: "春雷の頃",
-		artist: "22/7",
+		title: "健やかDE居たい",
+		artist: "八木海莉",
 		cover: "assets/music/cover/cl.jpg",
 		url: "assets/music/url/cl.mp3",
 		duration: 200,
 	},
+    {
+        id: 4,
+		title: "Speed of Light",
+		artist: "塞壬唱片",
+		cover: "assets/music/cover/mrfz.jpg",
+		url: "assets/music/url/mrfz.mp3",
+		duration: 200,
+    },
+    {
+        id: 5,
+		title: "Color Your Night",
+		artist: "Lotus Juice&高橋あず美",
+		cover: "assets/music/cover/p3r.jpg",
+		url: "assets/music/url/p3r.mp3",
+		duration: 200,
+    },
 ];
 
 async function fetchMetingPlaylist() {

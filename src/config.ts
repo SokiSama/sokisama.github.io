@@ -255,14 +255,14 @@ export const profileConfig: ProfileConfig = {
 	bio: "彼女の愛は、甘くて痛い",
 	links: [
 		{
-			name: "",
-			icon: "fa6-solid:mug-hot",
-			url: "mailto:sokisama0@gmail.com",
+			name: "Twitter（X）",
+			icon: "fa6-brands:twitter",
+			url: "https://x.com/soki_ruby",
 		},
 		
 		{
 			name: "GitHub",
-			icon: "fa6-brands:github",
+			icon: "fa6-brands:github-alt",
 			url: "https://github.com/SokiSama",
 		},
 		{
@@ -272,7 +272,7 @@ export const profileConfig: ProfileConfig = {
 		},
 		{
 			name: "Steam",
-			icon: "fa6-brands:steam",
+			icon: "fa6-brands:steam-symbol",
 			url: "https://steamcommunity.com/id/SokiSama/",
 		}
 	],
@@ -287,7 +287,7 @@ export const licenseConfig: LicenseConfig = {
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// 注意：某些样式（如背景颜色）已被覆盖，请参阅 astro.config.mjs 文件。
 	// 请选择深色主题，因为此博客主题目前仅支持深色背景
-	theme: "github-dark",
+	theme: "dracula",
 };
 
 export const commentConfig: CommentConfig = {
@@ -311,7 +311,7 @@ export const announcementConfig: AnnouncementConfig = {
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: false, // 启用音乐播放器功能
+	enable: true, // 启用音乐播放器功能
 };
 
 export const footerConfig: FooterConfig = {
@@ -399,6 +399,14 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 				collapseThreshold: 20,
 			},
 		},
+		{
+ 			type: "blogStats",
+ 			enable: true,
+  			order: 2, // 个人资料 order:1
+  			position: "sticky",
+  			class: "onload-animation",
+  			animationDelay: 100,
+		}
 	],
 
 	// 默认动画配置

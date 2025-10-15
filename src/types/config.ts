@@ -161,6 +161,7 @@ export type BlogPostData = {
 	published: Date;
 	description: string;
 	tags: string[];
+	blogStats?: string; // 文章统计数据
 	draft?: boolean;
 	image?: string;
 	category?: string;
@@ -207,6 +208,7 @@ export type WidgetComponentType =
 	| "tags"
 	| "toc"
 	| "music-player"
+	| "blogStats" // 添加 blogStats 组件类型
 	| "pio" // 添加 pio 组件类型
 	| "custom";
 
