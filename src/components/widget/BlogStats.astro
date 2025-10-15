@@ -1,13 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 
-// 获取文章集合
 const posts = await getCollection('posts');
 
-// 统计文章数
 const postCount = posts.length;
-
-// 统计标签和分类
 const tags = new Set();
 const categories = new Set();
 let totalWords = 0;
@@ -21,83 +17,36 @@ posts.forEach(post => {
 const totalWordsInWan = (totalWords / 10000).toFixed(1);
 ---
 
-<div class="blog-stats-modern">
-  <div class="card">
-    <div class="icon">📝</div>
-    <div class="text">
-      <div class="label">文章数</div>
-      <div class="value">{postCount}</div>
+<div class="grid grid-cols-2 gap-4 mt-4 sm:grid-cols-2">
+  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+    <div class="text-2xl mr-3">📝</div>
+    <div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">文章数</div>
+      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{postCount}</div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="icon">🏷</div>
-    <div class="text">
-      <div class="label">标签数</div>
-      <div class="value">{tags.size}</div>
+  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+    <div class="text-2xl mr-3">🏷</div>
+    <div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">标签数</div>
+      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{tags.size}</div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="icon">📂</div>
-    <div class="text">
-      <div class="label">分类数</div>
-      <div class="value">{categories.size}</div>
+  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+    <div class="text-2xl mr-3">📂</div>
+    <div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">分类数</div>
+      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{categories.size}</div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="icon">✍️</div>
-    <div class="text">
-      <div class="label">总字数</div>
-      <div class="value">{totalWordsInWan} 万</div>
+  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
+    <div class="text-2xl mr-3">✍️</div>
+    <div>
+      <div class="text-sm text-gray-600 dark:text-gray-400">总字数</div>
+      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{totalWordsInWan} 万</div>
     </div>
   </div>
 </div>
-
-<style>
-.blog-stats-modern {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.card {
-  display: flex;
-  align-items: center;
-  background: #f8f9fa;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-}
-
-.card .icon {
-  font-size: 1.5rem;
-  margin-right: 0.8rem;
-}
-
-.card .text .label {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-.card .text .value {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #222;
-}
-
-/* 响应式：小屏幕两列变一列 */
-@media (max-width: 600px) {
-  .blog-stats-modern {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
