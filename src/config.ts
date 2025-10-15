@@ -406,7 +406,15 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
   			position: "sticky",
   			class: "onload-animation",
   			animationDelay: 100,
-		}
+		},
+		  {
+     		 type: "visit-counter",
+     		 enable: true,
+     		 order: 5,
+     		 position: "sticky",
+     		 class: "onload-animation",
+     		 animationDelay: 250,
+  		  },
 	],
 
 	// 默认动画配置
@@ -501,10 +509,10 @@ export const widgetConfigs = {
 } as const;
 
 export const umamiConfig = {
-	enabled: false, // 是否显示Umami统计
+	enabled: true, // 是否显示Umami统计
 	apiKey: "api_XXXXXXXXXX", // 你的API密钥
 	baseUrl: "https://api.umami.is", // Umami Cloud API地址
 	scripts: `
-<script defer src="XXXX.XXX" data-website-id="ABCD1234"></script>
+<script defer src="https://eu.umami.is/script.js" data-website-id="d8f7888b-e346-405c-a000-8bd7d230f108"></script>
   `.trim(), // 上面填你要插入的Script,不用再去Layout中插入
 } as const;

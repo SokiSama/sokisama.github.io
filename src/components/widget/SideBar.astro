@@ -8,6 +8,8 @@ import Profile from "./Profile.astro";
 import Tags from "./Tags.astro";
 import TOC from "./TOC.astro";
 import BlogStats from './BlogStats.astro'; // 新增
+import VisitCounter from './VisitCounter.astro';
+
 
 interface Props {
 	class?: string;
@@ -28,7 +30,8 @@ const componentMap = {
 	announcement: Announcement,
 	categories: Categories,
 	tags: Tags,
-	blogStats: BlogStats, // 新增这一行
+	blogStats: BlogStats, 
+	VisitCounter: VisitCounter,// 新增这一行
 	toc: TOC,
 	"music-player": MusicPlayer,
 };

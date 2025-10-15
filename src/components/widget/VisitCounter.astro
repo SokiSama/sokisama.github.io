@@ -1,0 +1,26 @@
+---
+// src/components/widget/VisitCounter.astro
+import { umamiConfig } from '../../config';
+
+// 从配置中提取 shareURL 和网站 ID
+const shareUrl = umamiConfig.shareURL;
+const websiteId = umamiConfig.scripts.match(/data-website-id="([^"]+)"/)?.[1];
+
+// 获取访问量数据的函数
+async function getVisitCount() {
+  if (!shareUrl || !websiteId) return 0;
+  
+  try {
+    // 这里需要根据实际的 Umami API 调整
+    const response = await fetch(`${shareUrl}`);
+    const data = await response.json();
+    // 根据实际返回的数据结构提取访问量
+    return data?.pageviews?.value || 0;
+  } catch (error) {
+    console.error('获取访问量数据失败:', error);
+    return 0;
+  }
+}
+
+const visitCount = await getVisitCount();
+---

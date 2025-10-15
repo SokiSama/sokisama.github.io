@@ -210,6 +210,7 @@ export type WidgetComponentType =
 	| "music-player"
 	| "blogStats" // 添加 blogStats 组件类型
 	| "pio" // 添加 pio 组件类型
+	| "visit-counter"
 	| "custom";
 
 export type WidgetComponentConfig = {
