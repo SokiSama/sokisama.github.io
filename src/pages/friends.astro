@@ -6,6 +6,7 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import TwikooComment from '../components/comment/Twikoo.astro';
+import { title } from "node:process";
 const friendsPost = await getEntry("spec", "friends");
 //twikko envid
 const envId = "https://sweet-moonbeam-d0178d.netlify.app/.netlify/functions/twikoo";
@@ -51,6 +52,15 @@ const items = [
         imgurl: "https://friends.ichr.me/img/blog.hly0928.com.png",
         desc: "悟已往之不諫，知來者之可追",
         tags: ["Stevens 姐姐的 Blog"],
+
+    },
+
+    {
+        title:"ATao-Blog",
+        siteurl: "https://blog.atao.cyou",
+        imgurl: "https://cdn.atao.cyou/Web/Avatar.png",
+        desc: "做自己喜欢的事",
+        tags: ["自动化工程师desu"],
 
     }
 	

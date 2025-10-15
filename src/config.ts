@@ -27,7 +27,7 @@ export const siteConfig: SiteConfig = {
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 210, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		hue: 345, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
 		fixed: true, // 对访问者隐藏主题色选择器
 	},
 
@@ -277,12 +277,7 @@ export const profileConfig: ProfileConfig = {
 		},
 		
 	],
-	// Umami统计部份，记得在src/layouts/MainGridLayout.astro插入Umami的<script>
-		umami: {
-		enable: true, // 是否显示umami统计
-		shareId: "r5IAK8EWtwcFoHfV", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
-		region: "eu", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
-			},
+	
 };
 
 export const licenseConfig: LicenseConfig = {
