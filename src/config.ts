@@ -282,7 +282,7 @@ export const profileConfig: ProfileConfig = {
 		enable: true, // 是否显示umami统计
 		shareId: "r5IAK8EWtwcFoHfV", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
 		region: "eu", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
-				},
+		},
 };
 
 export const licenseConfig: LicenseConfig = {
@@ -414,14 +414,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
   			class: "onload-animation",
   			animationDelay: 100,
 		},
-		  {
-     		 type: "visit-counter",
-     		 enable: true,
-     		 order: 5,
-     		 position: "sticky",
-     		 class: "onload-animation",
-     		 animationDelay: 250,
-  		  },
+		  
 	],
 
 	// 默认动画配置
