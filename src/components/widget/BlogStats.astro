@@ -17,36 +17,110 @@ posts.forEach(post => {
 const totalWordsInWan = (totalWords / 10000).toFixed(1);
 ---
 
-<div class="grid grid-cols-2 gap-4 mt-4 sm:grid-cols-2">
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">📝</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">文章数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{postCount}</div>
+<style>
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: #ffffff; /* 浅色模式白底 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.3s ease, background 0.3s ease;
+  color: #222;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  margin-right: 0.75rem;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.stat-info .label,
+.stat-info .value {
+  color: inherit !important;
+}
+
+.stats-grid .tag {
+  color: #fff;
+  background-color: #3498db;
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* 小屏幕一列显示 */
+@media (max-width: 700px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  .stat-card {
+    background-color: #1e1e2e !important;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05) !important;
+    color: #ffffff !important;
+  }
+  .stat-card .stat-icon,
+  .stat-card .stat-info .label,
+  .stat-card .stat-info .value {
+    color: #ffffff !important;
+  }
+  .stats-grid .tag {
+    background-color: #1e90ff !important; /* 标签深色模式下改色 */
+  }
+}
+</style>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon">📝</div>
+    <div class="stat-info">
+      <div class="label">文章数</div>
+      <div class="value">{postCount}</div>
     </div>
   </div>
 
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">🏷</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">标签数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{tags.size}</div>
+  <div class="stat-card">
+    <div class="stat-icon">🏷</div>
+    <div class="stat-info">
+      <div class="label">标签数</div>
+      <div class="value">{tags.size}</div>
     </div>
   </div>
 
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">📂</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">分类数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{categories.size}</div>
+  <div class="stat-card">
+    <div class="stat-icon">📂</div>
+    <div class="stat-info">
+      <div class="label">分类数</div>
+      <div class="value">{categories.size}</div>
     </div>
   </div>
 
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">✍️</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">总字数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{totalWordsInWan} 万</div>
+  <div class="stat-card">
+    <div class="stat-icon">✍️</div>
+    <div class="stat-info">
+      <div class="label">总字数</div>
+      <div class="value">{totalWordsInWan} 万</div>
     </div>
   </div>
 </div>

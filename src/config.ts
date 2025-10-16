@@ -509,7 +509,7 @@ export const widgetConfigs = {
 } as const;
 
 export const umamiConfig = {
-	enabled: true, // 是否显示Umami统计
+	enabled: false, // 是否显示Umami统计
 	baseUrl: "https://eu.umami.is/share/r5IAK8EWtwcFoHfV", // Umami Cloud API地址
 	scripts: `
 <script defer src="https://cloud.umami.is/script.js" data-website-id="d8f7888b-e346-405c-a000-8bd7d230f108"></script>
