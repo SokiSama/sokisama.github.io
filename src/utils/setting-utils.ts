@@ -2,9 +2,49 @@ import {
 	DARK_MODE,
 	DEFAULT_THEME,
 	LIGHT_MODE,
+	SYSTEM_MODE,
 } from "@constants/constants";
 import { expressiveCodeConfig } from "@/config";
 import type { LIGHT_DARK_MODE } from "@/types/config";
+
+let systemMql: MediaQueryList | null = null;
+let systemMqlHandler: ((e: MediaQueryListEvent) => void) | null = null;
+
+function ensureSystemThemeListener() {
+	if (typeof window === "undefined") return;
+	if (!systemMql) {
+		systemMql = window.matchMedia("(prefers-color-scheme: dark)");
+	}
+	if (!systemMqlHandler) {
+		systemMqlHandler = () => {
+			// Only react when current mode is system
+			const current = getStoredTheme();
+			if (current === SYSTEM_MODE) {
+				applyThemeToDocument(SYSTEM_MODE);
+			}
+		};
+		try {
+			// Modern browsers
+			systemMql.addEventListener("change", systemMqlHandler);
+		} catch (err) {
+			// Safari < 14
+			// @ts-ignore
+			systemMql.addListener(systemMqlHandler);
+		}
+	}
+}
+
+function removeSystemThemeListener() {
+	if (!systemMql || !systemMqlHandler) return;
+	try {
+		systemMql.removeEventListener("change", systemMqlHandler);
+	} catch (err) {
+		// Safari < 14
+		// @ts-ignore
+		systemMql.removeListener(systemMqlHandler);
+	}
+	systemMqlHandler = null;
+}
 
 export function getDefaultHue(): number {
 	const fallback = "250";
@@ -32,38 +72,31 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 	const currentTheme = document.documentElement.getAttribute("data-theme");
 
 	// 计算目标主题状态
-	let targetIsDark: boolean = false; // 初始化默认值
-	switch (theme) {
-		case LIGHT_MODE:
-			targetIsDark = false;
-			break;
-		case DARK_MODE:
-			targetIsDark = true;
-			break;
-		default:
-			// 处理默认情况，使用当前主题状态
-			targetIsDark = currentIsDark;
-			break;
+	let targetIsDark = currentIsDark; // 默认保持当前，避免闪烁
+	if (theme === LIGHT_MODE) {
+		targetIsDark = false;
+	} else if (theme === DARK_MODE) {
+		targetIsDark = true;
+	} else if (theme === SYSTEM_MODE) {
+		const prefersDark = typeof window !== "undefined"
+			? window.matchMedia("(prefers-color-scheme: dark)").matches
+			: false;
+		targetIsDark = prefersDark;
 	}
 
-	// 检测是否真的需要主题切换：
-	// 1. dark类状态是否改变
-	// 2. expressiveCode主题是否需要更新
+	// 检测是否真的需要主题切换
 	const needsThemeChange = currentIsDark !== targetIsDark;
 	const expectedTheme = targetIsDark ? "github-dark" : "github-light";
 	const needsCodeThemeUpdate = currentTheme !== expectedTheme;
 
-	// 如果既不需要主题切换也不需要代码主题更新，直接返回
 	if (!needsThemeChange && !needsCodeThemeUpdate) {
 		return;
 	}
 
-	// 只在需要主题切换时添加过渡保护
 	if (needsThemeChange) {
 		document.documentElement.classList.add("is-theme-transitioning");
 	}
 
-	// 使用 requestAnimationFrame 确保在下一帧执行，避免闪屏
 	requestAnimationFrame(() => {
 		// 应用主题变化
 		if (needsThemeChange) {
@@ -76,22 +109,16 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 
 		// Set the theme for Expressive Code based on current mode
 		const expressiveTheme = targetIsDark ? "github-dark" : "github-light";
-		document.documentElement.setAttribute(
-			"data-theme",
-			expressiveTheme,
-		);
+		document.documentElement.setAttribute("data-theme", expressiveTheme);
 
 		// 强制重新渲染代码块 - 解决从首页进入文章页面时的渲染问题
 		if (needsCodeThemeUpdate) {
-			// 触发 expressice code 重新渲染
 			setTimeout(() => {
-				window.dispatchEvent(new CustomEvent('theme-change'));
+				window.dispatchEvent(new CustomEvent("theme-change"));
 			}, 0);
 		}
 
-		// 在下一帧快速移除保护类，使用微任务确保DOM更新完成
 		if (needsThemeChange) {
-			// 使用 requestAnimationFrame 确保在下一帧移除过渡保护类
 			requestAnimationFrame(() => {
 				document.documentElement.classList.remove("is-theme-transitioning");
 			});
@@ -102,6 +129,11 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 export function setTheme(theme: LIGHT_DARK_MODE): void {
 	localStorage.setItem("theme", theme);
 	applyThemeToDocument(theme);
+	if (theme === SYSTEM_MODE) {
+		ensureSystemThemeListener();
+	} else {
+		removeSystemThemeListener();
+	}
 }
 
 export function getStoredTheme(): LIGHT_DARK_MODE {

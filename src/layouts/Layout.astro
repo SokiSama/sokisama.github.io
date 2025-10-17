@@ -7,7 +7,8 @@ import ConfigCarrier from "@components/ConfigCarrier.astro";
 import MusicPlayer from "@components/widget/MusicPlayer.svelte";
 import Pio from "@components/widget/Pio.svelte"; // 使用 Svelte 版本的 Pio 组件
 import { profileConfig, siteConfig } from "@/config";
-import { umamiConfig, widgetConfigs } from "../config";
+import { widgetConfigs } from "../config";
+import { umamiConfig } from "../config.ts";
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
@@ -15,8 +16,9 @@ import {
 	DARK_MODE,
 	DEFAULT_THEME,
 	LIGHT_MODE,
+	SYSTEM_MODE,
 	PAGE_WIDTH,
-} from "../constants/constants";
+} from "../constants/constants.ts";
 import { defaultFavicons } from "../constants/icon";
 import type { Favicon, SakuraConfig } from "../types/config";
 import { pathsEqual, url } from "../utils/url-utils";
@@ -173,19 +175,25 @@ const umamiScripts = umamiConfig.scripts || ""; // 获取Umami scripts配置
 		))}
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
-		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
+		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, SYSTEM_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			// Load the theme from local storage
 			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
 			let isDark = false;
-			switch (theme) {
-				case LIGHT_MODE:
-					document.documentElement.classList.remove('dark');
-					isDark = false;
-					break
-				case DARK_MODE:
+			if (theme === LIGHT_MODE) {
+				document.documentElement.classList.remove('dark');
+				isDark = false;
+			} else if (theme === DARK_MODE) {
+				document.documentElement.classList.add('dark');
+				isDark = true;
+			} else if (theme === SYSTEM_MODE) {
+				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				if (prefersDark) {
 					document.documentElement.classList.add('dark');
 					isDark = true;
-					break
+				} else {
+					document.documentElement.classList.remove('dark');
+					isDark = false;
+				}
 			}
 			
 			// Set the theme for Expressive Code based on current mode
@@ -225,12 +233,7 @@ const umamiScripts = umamiConfig.scripts || ""; // 获取Umami scripts配置
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 
 		<!-- Umami Analytics -->
-		{umamiEnabled && (
-			<>
-				{umamiScripts && <Fragment set:html={umamiScripts} />}
-				<script src="/js/umami-share.js" defer></script>
-			</>
-		)}
+		{umamiEnabled && umamiScripts && <Fragment set:html={umamiScripts} />}
 
 </head>
 	<body class=" min-h-screen " class:list={[
@@ -645,7 +648,7 @@ const umamiScripts = umamiConfig.scripts || ""; // 获取Umami scripts配置
 }
 </style>
 
-<script>
+<script type="module">
 import { animationManager } from '../utils/animation-utils';
 import 'overlayscrollbars/overlayscrollbars.css';
 import {
@@ -741,7 +744,7 @@ function loadHue() {
 function initCustomScrollbar() {
 	// 完全禁用OverlayScrollbars的body初始化，避免导致页面重新加载
 	// 只处理katex元素的滚动条
-	const katexElements = document.querySelectorAll('.katex-display:not([data-scrollbar-initialized])');
+	const katexElements = document.querySelectorAll('.katex-display:not([data-scrollbar-initialized])') as NodeListOf<HTMLElement>;
 	katexElements.forEach(element => {
 		if (!element.parentNode) return;
 
@@ -1125,8 +1128,9 @@ const setup = () => {
 		});
 		
 		// 同步主题状态 - 解决从首页进入文章页面时代码块渲染问题
-		const storedTheme = localStorage.getItem('theme') || 'LIGHT_MODE';
-		const isDark = storedTheme === 'DARK_MODE';
+		const storedTheme = localStorage.getItem('theme') || 'system';
+		const prefersDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches : false;
+		const isDark = storedTheme === 'dark' || (storedTheme === 'system' && prefersDark);
 		const expectedTheme = isDark ? 'github-dark' : 'github-light';
 		const currentTheme = document.documentElement.getAttribute('data-theme');
 		
@@ -1250,7 +1254,7 @@ if (document.readyState === 'loading') {
 
 </script>
 
-<script>
+<script type="module">
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 

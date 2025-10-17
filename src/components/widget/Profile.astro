@@ -8,8 +8,8 @@ import { umamiConfig } from '../../config';
 
 // 解析 umami
 const umamiEnabled = umamiConfig.enabled || false;
-const umamiWebsiteId = umamiConfig.websiteId || "";
-const umamiShareId = umamiConfig.shareId || "";
+const umamiWebsiteId = umamiConfig.scripts.match(/data-website-id="([^"]+)"/)?.[1] || "";
+const umamiApiKey = umamiConfig.apiKey || "";
 const umamiBaseUrl = umamiConfig.baseUrl || "";
 ---
 
@@ -51,7 +51,7 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
 </div>
 
 {umamiEnabled && (
-    <script define:vars={{ umamiBaseUrl, umamiShareId, umamiWebsiteId, umamiConfig }}>
+    <script define:vars={{ umamiBaseUrl, umamiApiKey, umamiWebsiteId, umamiConfig }}>
         // 客户端统计文案生成函数
         function generateStatsText(pageViews, visits) {
             return `浏览量 ${pageViews} · 访问次数 ${visits}`;
@@ -65,7 +65,7 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
             
             try {
                 // 调用全局工具获取 Umami 统计数据
-                const stats = await getUmamiWebsiteStats(umamiBaseUrl, umamiShareId, umamiWebsiteId);
+                const stats = await getUmamiWebsiteStats(umamiBaseUrl, umamiApiKey, umamiWebsiteId);
                 
                 // 从返回的数据中提取页面浏览量和访客数
                 const pageViews = stats.pageviews || 0;

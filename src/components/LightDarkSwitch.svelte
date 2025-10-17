@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DARK_MODE, LIGHT_MODE } from "@constants/constants.ts";
+import { DARK_MODE, LIGHT_MODE, SYSTEM_MODE } from "@constants/constants.ts";
 import Icon from "@iconify/svelte";
 import {
 	getStoredTheme,
@@ -7,12 +7,26 @@ import {
 } from "@utils/setting-utils.ts";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
 
-const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE];
+const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE, SYSTEM_MODE];
 let mode: LIGHT_DARK_MODE = $state(getStoredTheme());
+
+// Toast state for system mode
+let showSystemToast = false;
+let toastTimer: number | null = null;
 
 function switchScheme(newMode: LIGHT_DARK_MODE) {
 	mode = newMode;
 	setTheme(newMode);
+	// Show toast when switching to system mode
+	if (newMode === SYSTEM_MODE) {
+		showSystemToast = true;
+		if (toastTimer) {
+			clearTimeout(toastTimer);
+		}
+		toastTimer = window.setTimeout(() => {
+			showSystemToast = false;
+		}, 1600);
+	}
 }
 
 function toggleScheme() {
@@ -49,7 +63,7 @@ if (typeof window !== 'undefined') {
     });
   }
   
-  // 页面加载完成后也同步一次状态
+
   document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
       const newMode = getStoredTheme();
@@ -62,12 +76,21 @@ if (typeof window !== 'undefined') {
 </script>
 
 <div class="relative z-50">
-    <button aria-label="Light/Dark Mode" class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="scheme-switch" onclick={toggleScheme}>
+    <button aria-label="Light/Dark/System Mode" class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="scheme-switch" onclick={toggleScheme}>
         <div class="absolute" class:opacity-0={mode !== LIGHT_MODE}>
             <Icon icon="material-symbols:wb-sunny-outline-rounded" class="text-[1.25rem]"></Icon>
         </div>
         <div class="absolute" class:opacity-0={mode !== DARK_MODE}>
             <Icon icon="material-symbols:dark-mode-outline-rounded" class="text-[1.25rem]"></Icon>
         </div>
+        <div class="absolute" class:opacity-0={mode !== SYSTEM_MODE}>
+            <Icon icon="material-symbols:brightness-auto-outline-rounded" class="text-[1.25rem]"></Icon>
+        </div>
     </button>
+
+    {#if showSystemToast}
+        <div role="status" aria-live="polite" class="absolute top-[-2rem] left-1/2 -translate-x-1/2 px-2 py-1 rounded-md text-xs shadow-md bg-[var(--btn-regular-bg)] text-[var(--btn-content)] select-none">
+            已跟随系统主题
+        </div>
+    {/if}
 </div>

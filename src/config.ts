@@ -31,7 +31,7 @@ export const siteConfig: SiteConfig = {
 		fixed: true, // 对访问者隐藏主题色选择器
 	},
 
-	
+
 	bangumi: {
 		userId: "1165424", // 在此处设置你的Bangumi用户ID，可以设置为 "sai" 测试
 	},
@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
 				/*"/assets/desktop-banner/d1.webp",
 				"/assets/desktop-banner/d2.webp",
 				"/assets/desktop-banner/d3.webp",*/
-				 "/assets/desktop-banner/d4.webp",
+				"/assets/desktop-banner/d4.webp",
 				/*"/assets/desktop-banner/d5.webp",
 				"/assets/desktop-banner/d6.webp",
 				"/assets/desktop-banner/d7.webp",
@@ -138,7 +138,7 @@ export const siteConfig: SiteConfig = {
 		sourceHanSans: {
 			enable: true, // 启用 思源黑体 字体作为全局字体，适合中文去使用
 		},
-		
+
 	},
 	showLastModified: true, // 控制“上次编辑”卡片显示的开关
 };
@@ -205,7 +205,7 @@ export const navBarConfig: NavBarConfig = {
 			],
 		},
 		*/
-		
+
 		/*{
 			name: "我的",
 			url: "/content/",
@@ -263,7 +263,7 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:twitter",
 			url: "https://x.com/soki_ruby",
 		},
-		
+
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github-alt",
@@ -279,14 +279,14 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:steam-symbol",
 			url: "https://steamcommunity.com/id/SokiSama/",
 		},
-		
+
 	],
 	// Umami统计部份
-		umami: {
+	umami: {
 		enable: true, // 是否显示umami统计
 		shareId: "r5IAK8EWtwcFoHfV", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
 		region: "eu", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
-		},
+	},
 };
 
 export const licenseConfig: LicenseConfig = {
@@ -411,14 +411,14 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			},
 		},
 		{
- 			type: "blogStats",
- 			enable: true,
-  			order: 6, // 个人资料 order:1
-  			position: "sticky",
-  			class: "onload-animation",
-  			animationDelay: 100,
+			type: "blogStats",
+			enable: true,
+			order: 6, // 个人资料 order:1
+			position: "sticky",
+			class: "onload-animation",
+			animationDelay: 100,
 		},
-		  
+
 	],
 
 	// 默认动画配置
@@ -513,10 +513,8 @@ export const widgetConfigs = {
 } as const;
 
 export const umamiConfig = {
-	enabled: true, // 是否显示Umami统计
-	baseUrl: "https://eu.umami.is", // Umami Cloud API地址
-	shareId: "r5IAK8EWtwcFoHfV",
-	websiteId: "d8f7888b-e346-405c-a000-8bd7d230f108",
+	enabled: false, // 是否显示Umami统计
+	baseUrl: "https://eu.umami.is/share/r5IAK8EWtwcFoHfV", // Umami Cloud API地址
 	scripts: `
 <script defer src="https://cloud.umami.is/script.js" data-website-id="d8f7888b-e346-405c-a000-8bd7d230f108"></script>
   `.trim(), // 上面填你要插入的Script,不用再去Layout中插入
