@@ -89,8 +89,12 @@ export const siteConfig: SiteConfig = {
 			title: "", // 主页横幅主标题
 
 			subtitle: [
-				"倾听，感受，思考",
-				"阴云彼端，晴空依然"
+				"你好",
+				"Hello",
+				"こんにちは",
+				"Bonjour",
+				"Ciao",
+
 			],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
