@@ -7,8 +7,7 @@ import ConfigCarrier from "@components/ConfigCarrier.astro";
 import MusicPlayer from "@components/widget/MusicPlayer.svelte";
 import Pio from "@components/widget/Pio.svelte"; // 使用 Svelte 版本的 Pio 组件
 import { profileConfig, siteConfig } from "@/config";
-import { widgetConfigs } from "../config";
-import { umamiConfig } from "../config.ts";
+import { umamiConfig, widgetConfigs } from "../config";
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
@@ -226,7 +225,12 @@ const umamiScripts = umamiConfig.scripts || ""; // 获取Umami scripts配置
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 
 		<!-- Umami Analytics -->
-		{umamiEnabled && umamiScripts && <Fragment set:html={umamiScripts} />}
+		{umamiEnabled && (
+			<>
+				{umamiScripts && <Fragment set:html={umamiScripts} />}
+				<script src="/js/umami-share.js" defer></script>
+			</>
+		)}
 
 </head>
 	<body class=" min-h-screen " class:list={[
@@ -737,7 +741,7 @@ function loadHue() {
 function initCustomScrollbar() {
 	// 完全禁用OverlayScrollbars的body初始化，避免导致页面重新加载
 	// 只处理katex元素的滚动条
-	const katexElements = document.querySelectorAll('.katex-display:not([data-scrollbar-initialized])') as NodeListOf<HTMLElement>;
+	const katexElements = document.querySelectorAll('.katex-display:not([data-scrollbar-initialized])');
 	katexElements.forEach(element => {
 		if (!element.parentNode) return;
 

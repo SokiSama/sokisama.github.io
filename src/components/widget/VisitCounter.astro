@@ -1,26 +1,37 @@
 ---
 // src/components/widget/VisitCounter.astro
-import { umamiConfig } from '../../config';
+import { umamiConfig } from "../../config";
 
-// 从配置中提取 shareURL 和网站 ID
-const shareUrl = umamiConfig.shareURL;
+// 从配置中提取 shareId、baseUrl 和网站 ID
+const shareId = umamiConfig.shareId;
+const baseUrl = umamiConfig.baseUrl;
 const websiteId = umamiConfig.scripts.match(/data-website-id="([^"]+)"/)?.[1];
+---
 
-// 获取访问量数据的函数
-async function getVisitCount() {
-  if (!shareUrl || !websiteId) return 0;
-  
-  try {
-    // 这里需要根据实际的 Umami API 调整
-    const response = await fetch(`${shareUrl}`);
-    const data = await response.json();
-    // 根据实际返回的数据结构提取访问量
-    return data?.pageviews?.value || 0;
-  } catch (error) {
-    console.error('获取访问量数据失败:', error);
-    return 0;
-  }
-}
+{umamiConfig.enabled && (
+  <div class="text-sm text-gray-500 mt-2 text-center">
+    站点总浏览量：<span id="visit-count-display">加载中...</span>
+  </div>
+)}
 
-const visitCount = await getVisitCount();
+{umamiConfig.enabled && (
+  <script define:vars={{ baseUrl, shareId, websiteId }}>
+    async function updateVisitCount() {
+      try {
+        const stats = await getUmamiWebsiteStats(baseUrl, shareId, websiteId);
+        const total = (stats?.pageviews || 0);
+        const el = document.getElementById('visit-count-display');
+        if (el) el.textContent = String(total);
+      } catch (e) {
+        const el = document.getElementById('visit-count-display');
+        if (el) el.textContent = '不可用';
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateVisitCount);
+    } else {
+      updateVisitCount();
+    }
+  </script>
+)}
 ---

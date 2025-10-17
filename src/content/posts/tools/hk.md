@@ -5,7 +5,7 @@ pinned: false
 description: 记一次HSBC开户历程
 image: "./cover.jpg"
 tags: [记录]
-category: 日常
+category: 心得
 licenseName: "CC BY-NC-SA 4.0"
 author: Soki
 sourceLink: ""

@@ -12,16 +12,16 @@ draft: false
 
 在浏览别人博客的时候，我们会发现在侧栏有个统计文章的小工具。其实这是一个自定义组件。我们只需要简单几步。就也能在自己的博客实现文章统计。这样会有一种成就感，码字更有动力（？）
 
-本文将以 Mizuki 主题为例，不同主题配置方法如出一辙。
+本文将以 Mizuki 主题为例，不同主题配置方法如出一辙。具体效果图看参考下图和博客页面。
 
-## **1.创建组件文件**
+![merged_image.png](https://p.ipic.vip/50z9ff.png)
 
-在 src/components/widget/ 下新建文件 BlogStats.astro  将下行代码复制进去并保存 。其中 <div class="icon"> 的内容根据自己需要修改
+在 src/components/widget/ 下新建文件 BlogStats.astro  将下行代码复制进去并保存 。
 
 ```
----
----
+--- 
 import { getCollection } from 'astro:content';
+import WidgetLayout from "./WidgetLayout.astro";
 
 const posts = await getCollection('posts');
 
@@ -31,47 +31,95 @@ const categories = new Set();
 let totalWords = 0;
 
 posts.forEach(post => {
-  if (post.data.tags) post.data.tags.forEach(tag => tags.add(tag));
-  if (post.data.category) categories.add(post.data.category);
-  if (post.body) totalWords += post.body.split(/\s+/).length;
+  if (post.data.tags) {
+    post.data.tags.forEach(tag => {
+      tags.add(tag);
+    });
+  }
+  if (post.data.category) {
+    categories.add(post.data.category);
+  }
+  if (post.body) {
+    totalWords += post.body.split(/\s+/).length;
+  }
 });
 
 const totalWordsInWan = (totalWords / 10000).toFixed(1);
 ---
 
-<div class="grid grid-cols-2 gap-4 mt-4 sm:grid-cols-2">
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">📝</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">文章数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{postCount}</div>
-    </div>
-  </div>
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+  rel="stylesheet"
+/>
 
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">🏷</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">标签数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{tags.size}</div>
-    </div>
-  </div>
+<style>
+  .material-symbols-rounded {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 1.8rem;
+    margin-right: 0.75rem;
+  }
 
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">📂</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">分类数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{categories.size}</div>
-    </div>
-  </div>
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
 
-  <div class="flex items-center bg-gray-100 dark:bg-[#1e1e2e] p-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-200">
-    <div class="text-2xl mr-3">✍️</div>
-    <div>
-      <div class="text-sm text-gray-600 dark:text-gray-400">总字数</div>
-      <div class="text-lg font-semibold text-gray-900 dark:text-gray-100">{totalWordsInWan} 万</div>
+  .stat-card {
+    border-radius: 12px;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.25s ease;
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+  }
+
+  html.dark .stat-card {
+    background-color: transparent;
+    color: white;
+  }
+</style>
+
+<WidgetLayout id="blog-stats">
+  <div class="stats-grid">
+    {/** 文章数 */}
+    <div class="stat-card">
+      <span class="material-symbols-rounded">description</span>
+      <div>
+        <div class="text-sm">文章数</div>
+        <div class="text-lg font-semibold">{postCount}</div>
+      </div>
+    </div>
+
+    {/** 标签数 */}
+    <div class="stat-card">
+      <span class="material-symbols-rounded">label_important</span>
+      <div>
+        <div class="text-sm">标签数</div>
+        <div class="text-lg font-semibold">{tags.size}</div>
+      </div>
+    </div>
+
+    {/** 分类数 */}
+    <div class="stat-card">
+      <span class="material-symbols-rounded">folder</span>
+      <div>
+        <div class="text-sm">分类数</div>
+        <div class="text-lg font-semibold">{categories.size}</div>
+      </div>
+    </div>
+
+    {/** 总字数 */}
+    <div class="stat-card">
+      <span class="material-symbols-rounded">edit</span>
+      <div>
+        <div class="text-sm">总字数</div>
+        <div class="text-lg font-semibold">{totalWordsInWan} 万</div>
+      </div>
     </div>
   </div>
-</div>
+</WidgetLayout>
 ```
 
 ---
@@ -111,20 +159,10 @@ const componentMap = {
 };
 ```
 
----
-
----
-
 ## **4.重启 Astro**
 
 ```
 pnpm run dev
 ```
 
-刷新页面即可看到已经生成的统计组件，同时适配暗色模式
-
-![image.png](https://p.ipic.vip/9m3zz0.png)
-
-
-![iShot_2025-10-15_8.36.16 PM.png](https://p.ipic.vip/wuup0p.png)
----
+刷新页面即可看到已经生成的统计组件
