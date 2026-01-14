@@ -8,6 +8,12 @@ export const en: Translation = {
 	[Key.search]: "Search",
 	[Key.other]: "Other",
 
+	// Navigation bar titles
+	[Key.navLinks]: "Links",
+	[Key.navMy]: "My",
+	[Key.navAbout]: "About",
+	[Key.navOthers]: "Others",
+
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
 	[Key.recentPosts]: "Recent Posts",
@@ -20,6 +26,14 @@ export const en: Translation = {
 
 	[Key.comments]: "Comments",
 	[Key.friends]: "Friends",
+	[Key.friendsSubtitle]: "Discover more excellent websites",
+	[Key.friendsSearchPlaceholder]: "Search friend name or description...",
+	[Key.friendsFilterAll]: "All",
+	[Key.friendsNoResults]: "No matching friends found",
+	[Key.friendsVisit]: "Visit",
+	[Key.friendsCopyLink]: "Copy Link",
+	[Key.friendsCopySuccess]: "Copied",
+	[Key.friendsTags]: "Tags",
 	[Key.untitled]: "Untitled",
 	[Key.uncategorized]: "Uncategorized",
 	[Key.noTags]: "No Tags",
@@ -44,18 +58,17 @@ export const en: Translation = {
 	[Key.license]: "License",
 	[Key.anime]: "Anime",
 	[Key.diary]: "Diary",
+	[Key.gallery]: "Gallery",
 
 	// Anime Page
 	[Key.animeTitle]: "My Anime List",
 	[Key.animeSubtitle]: "Record my anime journey",
-	[Key.animeList]: "Anime List",
-	[Key.animeTotal]: "Total",
-	[Key.animeWatching]: "Watching",
-	[Key.animeCompleted]: "Completed",
-	[Key.animeAvgRating]: "Average Rating",
 	[Key.animeStatusWatching]: "Watching",
 	[Key.animeStatusCompleted]: "Completed",
 	[Key.animeStatusPlanned]: "Planned",
+	[Key.animeStatusOnHold]: "On Hold",
+	[Key.animeStatusDropped]: "Dropped",
+	[Key.animeFilterAll]: "All",
 	[Key.animeYear]: "Year",
 	[Key.animeStudio]: "Studio",
 	[Key.animeEmpty]: "No anime data",
@@ -67,7 +80,6 @@ export const en: Translation = {
 	// Diary Page
 	[Key.diarySubtitle]: "Share life anytime, anywhere",
 	[Key.diaryCount]: "diary entries",
-	[Key.diaryImage]: "Image",
 	[Key.diaryReply]: "Reply",
 	[Key.diaryTips]: "Only show the latest 30 diary entries",
 	[Key.diaryMinutesAgo]: "minutes ago",
@@ -91,6 +103,11 @@ export const en: Translation = {
 	[Key.albumsEmptyDesc]:
 		"No albums have been created yet. Go add some beautiful memories!",
 	[Key.albumsBackToList]: "Back to Albums",
+
+	// Devices Page
+	[Key.devices]: "My Devices",
+	[Key.devicesSubtitle]: "Here are the devices I use in my daily life",
+	[Key.devicesViewDetails]: "View Details",
 	[Key.albumsPhotoCount]: "photo",
 	[Key.albumsPhotosCount]: "photos",
 
@@ -118,6 +135,8 @@ export const en: Translation = {
 	[Key.projectsPlanned]: "Planned",
 	[Key.projectsDemo]: "Live Demo",
 	[Key.projectsSource]: "Source Code",
+	[Key.projectsVisit]: "Visit Project",
+	[Key.projectsGitHub]: "GitHub",
 
 	// RSS Page
 	[Key.rss]: "RSS Feed",
@@ -126,7 +145,7 @@ export const en: Translation = {
 		"Subscribe via RSS to get the latest articles and updates imediately",
 	[Key.rssLink]: "RSS Link",
 	[Key.rssCopyToReader]: "Copy link to your RSS reader",
-	[Key.rssCopyLink]: "Copy Link",
+	[Key.rssCopyLink]: "Copy",
 	[Key.rssLatestPosts]: "Latest Posts",
 	[Key.rssWhatIsRSS]: "What is RSS?",
 	[Key.rssWhatIsRSSDescription]:
@@ -148,21 +167,27 @@ export const en: Translation = {
 		"Subscribe via Atom to get the latest articles and updates immediately",
 	[Key.atomLink]: "Atom Link",
 	[Key.atomCopyToReader]: "Copy link to your Atom reader",
-	[Key.atomCopyLink]: "Copy Link",
+	[Key.atomCopyLink]: "Copy",
 	[Key.atomLatestPosts]: "Latest Posts",
 	[Key.atomWhatIsAtom]: "What is Atom?",
 	[Key.atomWhatIsAtomDescription]:
 		"Atom (Atom Syndication Format) is an XML-based standard for describing feeds and their items. With Atom, you can:",
 	[Key.atomBenefit1]:
 		"Get the latest website content in time without manually visiting",
-	[Key.atomBenefit2]: "Manage subscriptions to multiple websites in one place",
+	[Key.atomBenefit2]:
+		"Manage subscriptions to multiple websites in one place",
 	[Key.atomBenefit3]: "Avoid missing important updates and articles",
 	[Key.atomBenefit4]: "Enjoy an ad-free, clean reading experience",
 	[Key.atomHowToUse]:
 		"It is recommended to use Feedly, Inoreader or other Atom readers to subscribe to this site.",
 	[Key.atomCopied]: "Atom link copied to clipboard!",
 	[Key.atomCopyFailed]: "Copy failed, please copy the link manually",
-	
+
+	// Wallpaper mode
+	[Key.wallpaperBanner]: "Banner Mode",
+	[Key.wallpaperFullscreen]: "Fullscreen Mode",
+	[Key.wallpaperNone]: "Hide Wallpaper",
+
 	// Skills Page
 	[Key.skills]: "Skills",
 	[Key.skillsSubtitle]: "My technical skills and expertise",
@@ -187,8 +212,9 @@ export const en: Translation = {
 	[Key.skillsAdvancedTitle]: "Professional Skills",
 	[Key.skillsProjects]: "Related Projects",
 	[Key.skillsDistribution]: "Skill Distribution",
-	[Key.skillsByLevel]: "Distribution by Level",
-	[Key.skillsByCategory]: "Distribution by Category",
+	[Key.skillsByLevel]: "By Level",
+	[Key.skillsByCategory]: "By Category",
+	[Key.noData]: "No data",
 
 	// Timeline Page
 	[Key.timeline]: "Timeline",
@@ -208,14 +234,8 @@ export const en: Translation = {
 	[Key.timelineCurrent]: "Current Status",
 	[Key.timelineHistory]: "History",
 	[Key.timelineAchievements]: "Achievements",
-	[Key.timelineStatistics]: "Statistics",
-	[Key.timelineByType]: "Grouped by Type",
-	[Key.timelineWorkExperience]: "Work Experience",
-	[Key.timelineTotalExperience]: "Total Work Experience",
-	[Key.timelineWorkPositions]: "Work Positions",
-	[Key.timelineCurrentRole]: "Current Status",
-	[Key.timelineEmployed]: "Employed",
-	[Key.timelineAvailable]: "Available",
+	[Key.timelineStartDate]: "Start Date",
+	[Key.timelineDuration]: "Duration",
 
 	// Password Protection
 	[Key.passwordProtected]: "Password Protected",
@@ -235,22 +255,60 @@ export const en: Translation = {
 	[Key.passwordUnlockButton]: "Unlock",
 	[Key.copyFailed]: "Copy failed:",
 	[Key.syntaxHighlightFailed]: "Syntax highlighting failed:",
-	[Key.autoSyntaxHighlightFailed]: "Automatic syntax highlighting also failed:",
+	[Key.autoSyntaxHighlightFailed]:
+		"Automatic syntax highlighting also failed:",
 	[Key.decryptionError]: "An error occurred during decryption:",
 
 	// Last Modified Time Card
 	[Key.lastModifiedPrefix]: "Time since last edit: ",
 	[Key.lastModifiedOutdated]: "Some information may be outdated",
-	[Key.year]: "Y ",
-	[Key.month]: "M ",
-	[Key.day]: "D ",
-	[Key.hour]: "H ",
-	[Key.minute]: "Min ",
-	[Key.second]: "Sec",
 	[Key.year]: "y",
 	[Key.month]: "m",
 	[Key.day]: "d",
 	[Key.hour]: "h",
 	[Key.minute]: "min",
 	[Key.second]: "s",
+
+	// Site Stats
+	[Key.siteStats]: "Site Statistics",
+	[Key.siteStatsPostCount]: "Posts",
+	[Key.siteStatsCategoryCount]: "Categories",
+	[Key.siteStatsTagCount]: "Tags",
+	[Key.siteStatsTotalWords]: "Total Words",
+	[Key.siteStatsRunningDays]: "Running Time",
+	[Key.siteStatsLastUpdate]: "Last Activity",
+	[Key.siteStatsDaysAgo]: "{days} days ago",
+	[Key.siteStatsDays]: "{days} days",
+
+	// Calendar Component
+	[Key.calendarSunday]: "Sun",
+	[Key.calendarMonday]: "Mon",
+	[Key.calendarTuesday]: "Tue",
+	[Key.calendarWednesday]: "Wed",
+	[Key.calendarThursday]: "Thu",
+	[Key.calendarFriday]: "Fri",
+	[Key.calendarSaturday]: "Sat",
+	[Key.calendarJanuary]: "Jan",
+	[Key.calendarFebruary]: "Feb",
+	[Key.calendarMarch]: "Mar",
+	[Key.calendarApril]: "Apr",
+	[Key.calendarMay]: "May",
+	[Key.calendarJune]: "Jun",
+	[Key.calendarJuly]: "Jul",
+	[Key.calendarAugust]: "Aug",
+	[Key.calendarSeptember]: "Sep",
+	[Key.calendarOctober]: "Oct",
+	[Key.calendarNovember]: "Nov",
+	[Key.calendarDecember]: "Dec",
+
+	// Share Functionality
+	[Key.shareArticle]: "Share",
+	[Key.generatingPoster]: "Generating poster...",
+	[Key.copied]: "Copied",
+	[Key.copyLink]: "Copy Link",
+	[Key.savePoster]: "Save Poster",
+	[Key.scanToRead]: "Scan to Read",
+	[Key.shareOnSocial]: "Share",
+	[Key.shareOnSocialDescription]:
+		"If this article helped you, please share it with others!",
 };

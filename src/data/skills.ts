@@ -28,7 +28,11 @@ export const skillsData: Skill[] = [
 		category: "frontend",
 		level: "advanced",
 		experience: { years: 3, months: 6 },
-		projects: ["mizuki-blog", "portfolio-website", "data-visualization-tool"],
+		projects: [
+			"mizuki-blog",
+			"portfolio-website",
+			"data-visualization-tool",
+		],
 		color: "#F7DF1E",
 	},
 	{
@@ -89,7 +93,7 @@ export const skillsData: Skill[] = [
 		level: "intermediate",
 		experience: { years: 1, months: 4 },
 		projects: ["e-commerce-frontend", "blog-platform"],
-		color: "#000000",
+		color: "#616161", // 更改为深灰色，避免纯黑色
 	},
 	{
 		id: "nuxtjs",
@@ -142,7 +146,8 @@ export const skillsData: Skill[] = [
 	{
 		id: "webpack",
 		name: "Webpack",
-		description: "A static module bundler for modern JavaScript applications.",
+		description:
+			"A static module bundler for modern JavaScript applications.",
 		icon: "logos:webpack",
 		category: "frontend",
 		level: "intermediate",
@@ -316,7 +321,7 @@ export const skillsData: Skill[] = [
 		level: "intermediate",
 		experience: { years: 1, months: 8 },
 		projects: ["data-visualization-tool"],
-		color: "#000000",
+		color: "#616161", // 更改为深灰色，避免纯黑色
 	},
 	{
 		id: "spring",
@@ -461,7 +466,7 @@ export const skillsData: Skill[] = [
 		level: "intermediate",
 		experience: { years: 1, months: 8 },
 		projects: ["java-enterprise", "spring-boot-app"],
-		color: "#000000",
+		color: "#616161", // 更改为深灰色，避免纯黑色
 	},
 	{
 		id: "pycharm",
@@ -485,7 +490,7 @@ export const skillsData: Skill[] = [
 		level: "beginner",
 		experience: { years: 0, months: 8 },
 		projects: ["dotnet-api", "desktop-app"],
-		color: "#000000",
+		color: "#616161", // 更改为深灰色，避免纯黑色
 	},
 	{
 		id: "goland",
@@ -668,7 +673,8 @@ export const skillsData: Skill[] = [
 	{
 		id: "cypress",
 		name: "Cypress",
-		description: "A modern end-to-end testing framework for web applications.",
+		description:
+			"A modern end-to-end testing framework for web applications.",
 		icon: "logos:cypress-icon",
 		category: "other",
 		level: "beginner",
@@ -683,7 +689,8 @@ export const getSkillStats = () => {
 	const total = skillsData.length;
 	const byLevel = {
 		beginner: skillsData.filter((s) => s.level === "beginner").length,
-		intermediate: skillsData.filter((s) => s.level === "intermediate").length,
+		intermediate: skillsData.filter((s) => s.level === "intermediate")
+			.length,
 		advanced: skillsData.filter((s) => s.level === "advanced").length,
 		expert: skillsData.filter((s) => s.level === "expert").length,
 	};
