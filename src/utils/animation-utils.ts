@@ -64,12 +64,16 @@ export class AnimationManager {
 		this.isAnimating = true;
 		document.documentElement.classList.add("is-leaving");
 
+		// 移动端优化：减少动画延迟，避免闪烁
+		const isMobile = window.innerWidth <= 768;
+		const delay = isMobile ? 10 : 30;
+
 		// 添加离开动画类到主要元素
 		const mainElements = document.querySelectorAll(".transition-leaving");
 		mainElements.forEach((element, index) => {
 			setTimeout(() => {
 				element.classList.add("animate-leave");
-			}, index * 30); // 30ms 的错开延迟
+			}, index * delay);
 		});
 	}
 
@@ -102,7 +106,8 @@ export class AnimationManager {
 		animatedElements.forEach((element, index) => {
 			const htmlElement = element as HTMLElement;
 			const delay =
-				Number.parseInt(htmlElement.style.animationDelay, 10) || index * 50;
+				Number.parseInt(htmlElement.style.animationDelay, 10) ||
+				index * 50;
 
 			// 重置动画
 			htmlElement.style.opacity = "0";
@@ -217,16 +222,31 @@ export class AnimationManager {
 		}, delay);
 	}
 
+	// batchAnimate is deprecated, use staggerAnimations instead
+	// batchAnimate(
+	// 	elements: NodeListOf<Element> | Element[],
+	// 	config: AnimationConfig & { stagger?: number } = {},
+	// ): void {
+	// 	const { stagger = 50, ...animationConfig } = config;
+	//
+	// 	elements.forEach((element, index) => {
+	// 		this.createAnimation(element as HTMLElement, {
+	// 			...animationConfig,
+	// 			delay: (animationConfig.delay || 0) + index * stagger,
+	// 		});
+	// 	});
+	// }
+
 	/**
 	 * 批量动画
 	 */
-	batchAnimate(
-		elements: NodeListOf<Element> | Element[],
+	staggerAnimations(
+		elements: NodeListOf<Element> | HTMLElement[],
 		config: AnimationConfig & { stagger?: number } = {},
 	): void {
 		const { stagger = 50, ...animationConfig } = config;
 
-		elements.forEach((element, index) => {
+		elements.forEach((element: Element | HTMLElement, index: number) => {
 			this.createAnimation(element as HTMLElement, {
 				...animationConfig,
 				delay: (animationConfig.delay || 0) + index * stagger,

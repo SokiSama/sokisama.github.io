@@ -2,9 +2,11 @@
 import type { MarkdownHeading } from "astro";
 import { widgetManager } from "../../utils/widget-manager";
 import Announcement from "./Announcement.astro";
+import Calendar from "./Calendar.astro";
 import Categories from "./Categories.astro";
 import MusicPlayer from "./MusicPlayer.svelte";
 import Profile from "./Profile.astro";
+import SiteStats from "./SiteStats.astro";
 import Tags from "./Tags.astro";
 import TOC from "./TOC.astro";
 import BlogStats from './BlogStats.astro'; // 新增
@@ -14,6 +16,7 @@ import VisitCounter from './VisitCounter.astro';
 interface Props {
 	class?: string;
 	headings?: MarkdownHeading[];
+	isBothSidebarMode?: boolean;
 }
 
 
@@ -21,8 +24,15 @@ interface Props {
 const { class: className, headings } = Astro.props;
 
 // 获取配置的组件列表
-const topComponents = widgetManager.getComponentsByPosition("top");
-const stickyComponents = widgetManager.getComponentsByPosition("sticky");
+// 在双侧边栏模式下，桌面端只获取左侧组件
+// 手机端仍然获取所有组件（不指定sidebar参数）以保持原有布局
+const isBothSidebarMode = Astro.props.isBothSidebarMode ?? false;
+const topComponents = isBothSidebarMode
+	? widgetManager.getComponentsByPosition("top", "left")
+	: widgetManager.getComponentsByPosition("top");
+const stickyComponents = isBothSidebarMode
+	? widgetManager.getComponentsByPosition("sticky", "left")
+	: widgetManager.getComponentsByPosition("sticky");
 
 // 组件映射表
 const componentMap = {
@@ -34,6 +44,8 @@ const componentMap = {
 	VisitCounter: VisitCounter,// 新增这一行
 	toc: TOC,
 	"music-player": MusicPlayer,
+	"site-stats": SiteStats,
+	calendar: Calendar,
 };
 
 // 渲染组件的辅助函数
@@ -88,28 +100,31 @@ function renderComponent(component: any, index: number, _components: any[]) {
 <!-- 响应式样式和JavaScript -->
 <style>
 	/* 响应式断点样式 */
-	@media (max-width: 768px) {
+	@media (max-width: 1280px) {
 		#sidebar {
 			display: var(--sidebar-mobile-display, block);
 		}
 	}
 	
-	@media (min-width: 769px) and (max-width: 1024px) {
+	@media (min-width: 769px) and (max-width: 1279px) {
 		#sidebar {
 			display: var(--sidebar-tablet-display, block);
 		}
 	}
-	
-	@media (min-width: 1025px) {
+
+	@media (min-width: 1280px) {
 		#sidebar {
 			display: var(--sidebar-desktop-display, block);
 		}
 	}
 </style>
 
-<script is:inline>
-	import { widgetManager } from "../../utils/widget-manager";
-	
+<script is:inline define:vars={{
+	breakpoints: widgetManager.getBreakpoints(),
+	mobileShowSidebar: widgetManager.shouldShowSidebar('mobile'),
+	tabletShowSidebar: widgetManager.shouldShowSidebar('tablet'),
+	desktopShowSidebar: widgetManager.shouldShowSidebar('desktop')
+}}>
 	// 响应式布局管理
 	class SidebarManager {
 		constructor() {
@@ -132,10 +147,9 @@ function renderComponent(component: any, index: number, _components: any[]) {
 		}
 		
 		updateResponsiveDisplay() {
-			const breakpoints = widgetManager.getBreakpoints();
 			const width = window.innerWidth;
 			
-			let deviceType: 'mobile' | 'tablet' | 'desktop';
+			let deviceType;
 			if (width < breakpoints.mobile) {
 				deviceType = 'mobile';
 			} else if (width < breakpoints.tablet) {
@@ -144,7 +158,16 @@ function renderComponent(component: any, index: number, _components: any[]) {
 				deviceType = 'desktop';
 			}
 			
-			const shouldShow = widgetManager.shouldShowSidebar(deviceType);
+			// 根据设备类型判断是否显示侧边栏
+			let shouldShow = false;
+			if (deviceType === 'mobile') {
+				shouldShow = mobileShowSidebar;
+			} else if (deviceType === 'tablet') {
+				shouldShow = tabletShowSidebar;
+			} else {
+				shouldShow = desktopShowSidebar;
+			}
+			
 			const sidebar = document.getElementById('sidebar');
 			
 			if (sidebar) {
