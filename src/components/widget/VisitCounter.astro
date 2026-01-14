@@ -8,13 +8,13 @@ const baseUrl = umamiConfig.baseUrl;
 const websiteId = umamiConfig.scripts.match(/data-website-id="([^"]+)"/)?.[1];
 ---
 
-{umamiConfig.enabled && (
+{(umamiConfig.enabled && websiteId && apiKey) && (
   <div class="text-sm text-gray-500 mt-2 text-center">
     站点总浏览量：<span id="visit-count-display">加载中...</span>
   </div>
 )}
 
-{umamiConfig.enabled && (
+{(umamiConfig.enabled && websiteId && apiKey) && (
   <script define:vars={{ baseUrl, apiKey, websiteId }}>
     async function updateVisitCount() {
       try {

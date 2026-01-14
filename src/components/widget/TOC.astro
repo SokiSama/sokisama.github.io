@@ -60,12 +60,15 @@ class TableOfContents extends HTMLElement {
 
     markVisibleSection = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
-            const id = entry.target.children[0]?.getAttribute("id");
+            // 直接观察标题元素本身，优先读取自身的 id
+            const targetEl = entry.target as HTMLElement;
+            const id = targetEl.getAttribute("id") || targetEl.children[0]?.getAttribute("id");
             const idx = id ? this.headingIdxMap.get(id) : undefined;
             if (idx != undefined)
                 this.active[idx] = entry.isIntersecting;
 
-            if (entry.isIntersecting && this.anchorNavTarget == entry.target.firstChild)
+            // 当通过点击导航后，目标标题进入视野，则清除锚点导航目标
+            if (entry.isIntersecting && this.anchorNavTarget == entry.target)
                 this.anchorNavTarget = null;
         });
 
@@ -249,7 +252,8 @@ class TableOfContents extends HTMLElement {
         for (let i = 0; i < this.tocEntries.length; i++) {
             const id = decodeURIComponent(this.tocEntries[i].hash?.substring(1));
             const heading = document.getElementById(id);
-            const section = heading?.parentElement;
+            // 直接使用标题元素作为观察目标，避免父容器过大导致可见性判定失真
+            const section = heading as HTMLElement | null;
             if (heading instanceof HTMLElement && section instanceof HTMLElement) {
                 this.headings[i] = heading;
                 this.sections[i] = section;
@@ -339,11 +343,11 @@ class TableOfContents extends HTMLElement {
                     badgeContent = '<div class="transition w-1.5 h-1.5 rounded-sm bg-black/5 dark:bg-white/10"></div>';
                 }
                 
-                return `<a href="#${heading.slug}" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2">
-                    <div class="transition w-5 h-5 shrink-0 rounded-lg text-xs flex items-center justify-center font-bold ${depthClass} ${heading.depth === minDepth ? 'bg-[var(--toc-badge-bg)] text-[var(--btn-content)]' : ''}">
+                return `<a href="#${heading.slug}" class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-1.5">
+                    <div class="transition w-4 h-4 shrink-0 rounded-lg text-[0.7rem] flex items-center justify-center font-bold ${depthClass} ${heading.depth === minDepth ? 'bg-[var(--toc-badge-bg)] text-[var(--btn-content)]' : ''}">
                         ${badgeContent}
                     </div>
-                    <div class="transition text-sm ${heading.depth <= minDepth + 1 ? 'text-50' : 'text-30'}">${heading.text}</div>
+                    <div class="transition text-xs ${heading.depth <= minDepth + 1 ? 'text-50' : 'text-30'}">${heading.text}</div>
                 </a>`;
             }).join('');
         this.innerHTML = tocHTML + '<div id="active-indicator" style="opacity: 0" class="-z-10 absolute bg-[var(--toc-btn-hover)] left-0 right-0 rounded-xl transition-all group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"></div>';
@@ -371,9 +375,20 @@ if (!customElements.get("table-of-contents")) {
       position: relative;
       scroll-behavior: smooth;
       display: block;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
   }
 
   table-of-contents#toc::-webkit-scrollbar {
-      display: none;
+      width: 8px;
+      height: 8px;
+  }
+  table-of-contents#toc::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 6px;
+  }
+  table-of-contents#toc::-webkit-scrollbar-track {
+      background: transparent;
   }
 </style>

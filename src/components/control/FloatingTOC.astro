@@ -42,18 +42,18 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 </div>
 
 <style>
-	.floating-toc-wrapper {
-		position: fixed;
-		right: 6rem;
-		bottom: 14rem;
-		z-index: 50;
-		pointer-events: auto;
-		transform: translateX(5rem);
-		opacity: 0.6;
-		transition:
-			opacity 0.3s ease,
-			transform 0.3s ease;
-	}
+    .floating-toc-wrapper {
+        position: fixed;
+        right: 1rem;
+        bottom: 6rem;
+        z-index: 50;
+        pointer-events: auto;
+        transform: none;
+        opacity: 0.9;
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+    }
 
 	.floating-toc-wrapper:hover,
 	.floating-toc-wrapper.active {
@@ -100,23 +100,23 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 		position: relative;
 	}
 
-	.floating-toc-panel {
-		position: absolute;
-		bottom: 4.5rem;
-		right: 0;
-		width: 18rem;
-		max-height: 60vh;
-		background: var(--card-bg);
-		border: 1px solid var(--line-color);
-		border-radius: 1rem;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-		overflow: hidden;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateY(10px) scale(0.95);
-		transition: all 0.2s ease;
-		pointer-events: none;
-	}
+    .floating-toc-panel {
+        position: absolute;
+        bottom: 4rem;
+        right: 0;
+        width: 16rem;
+        max-height: 65vh;
+        background: var(--card-bg);
+        border: 1px solid var(--line-color);
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px) scale(0.95);
+        transition: all 0.2s ease;
+        pointer-events: none;
+    }
 
 	.floating-toc-panel.show {
 		opacity: 1;
@@ -130,10 +130,15 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 		max-height: 60vh;
 		overflow-y: auto;
 		overflow-x: hidden;
+		/* 提升滚动体验与滚动条可见性 */
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: thin; /* Firefox */
+		scrollbar-color: var(--line-color) transparent; /* Firefox */
+		scrollbar-gutter: stable both-edges; /* 预留滚动条空间，避免内容抖动 */
 	}
 
 	.floating-toc-panel-content::-webkit-scrollbar {
-		width: 4px;
+		width: 8px; /* 增加宽度，便于观察 */
 	}
 
 	.floating-toc-panel-content::-webkit-scrollbar-track {
@@ -142,7 +147,7 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 
 	.floating-toc-panel-content::-webkit-scrollbar-thumb {
 		background: var(--line-color);
-		border-radius: 2px;
+		border-radius: 4px;
 	}
 
 	.floating-toc-wrapper.no-toc {
@@ -376,14 +381,27 @@ const useJapaneseBadge = siteConfig.toc.useJapaneseBadge;
 						const panelContent = this.content;
 						if (panelContent) {
 							const linkEl = link as HTMLElement;
-							const panelRect =
-								panelContent.getBoundingClientRect();
-							const linkRect = linkEl.getBoundingClientRect();
-							if (
-								linkRect.top < panelRect.top ||
-								linkRect.bottom > panelRect.bottom
+							const contentTop = panelContent.scrollTop;
+							const contentHeight = panelContent.clientHeight;
+							const linkTop = linkEl.offsetTop;
+							const linkHeight = linkEl.offsetHeight;
+							const padding = 12;
+
+							// 当活动项超出可视区域时，平滑滚动到视野内
+							if (linkTop < contentTop + padding) {
+								panelContent.scrollTo({
+									top: Math.max(linkTop - padding, 0),
+									behavior: "smooth",
+								});
+							} else if (
+								linkTop + linkHeight >
+								contentTop + contentHeight - padding
 							) {
-								linkEl.scrollIntoView({ block: "nearest" });
+								panelContent.scrollTo({
+									top:
+										linkTop - contentHeight + linkHeight + padding,
+									behavior: "smooth",
+								});
 							}
 						}
 					}

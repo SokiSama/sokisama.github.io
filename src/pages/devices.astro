@@ -64,7 +64,7 @@ const brands = Object.keys(devices);
           >
 
             <!-- 设备图片区域 -->
-            <div class="relative p-6 pb-0">
+            <div class="relative px-6 pt-0 pb-0">
               <div class="flex justify-center items-center h-48 bg-gradient-to-br from-[var(--card-bg)] to-[var(--btn-regular-bg)] rounded-lg overflow-hidden relative">
                 <div class="absolute inset-0 bg-[var(--primary)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <img
@@ -76,7 +76,7 @@ const brands = Object.keys(devices);
             </div>
 
             <!-- 设备信息区域 -->
-            <div class="p-6 pt-4 relative z-10">
+            <div class="px-6 pt-0 pb-6 relative z-10">
               <div class="flex items-start justify-between mb-3">
                 <h3 class="text-lg font-bold text-black/90 dark:text-white/90 group-hover:text-[var(--primary)] transition-colors duration-300">
                   {device.name}
@@ -136,7 +136,7 @@ const brands = Object.keys(devices);
             style="animation-delay: ${index * 100}ms; animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; opacity: 0;"
           >
             <!-- 设备图片区域 -->
-            <div class="relative p-6 pb-0">
+            <div class="relative px-6 pt-0 pb-0">
               <div class="flex justify-center items-center h-48 bg-gradient-to-br from-[var(--card-bg)] to-[var(--btn-regular-bg)] rounded-lg overflow-hidden relative">
                 <div class="absolute inset-0 bg-[var(--primary)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <img
@@ -148,7 +148,7 @@ const brands = Object.keys(devices);
             </div>
 
             <!-- 设备信息区域 -->
-            <div class="p-6 pt-4 relative z-10">
+            <div class="px-6 pt-0 pb-6 relative z-10">
               <div class="flex items-start justify-between mb-3">
                 <h3 class="text-lg font-bold text-black/90 dark:text-white/90 group-hover:text-[var(--primary)] transition-colors duration-300">
                   ${device.name}
@@ -303,12 +303,12 @@ const brands = Object.keys(devices);
         font-size: 0.8rem;
       }
 
-      .device-card .relative.p-6.pb-0 {
-        padding: 1rem 1rem 0;
+      .device-card .relative.px-6.pt-0.pb-0 {
+        padding: 0 1rem 0;
       }
 
-      .device-card .p-6.pt-4 {
-        padding: 1rem;
+      .device-card .px-6.pt-0.pb-6 {
+        padding: 0 1rem 1rem;
       }
     }
 

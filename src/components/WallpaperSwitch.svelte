@@ -14,13 +14,18 @@
     import type { WALLPAPER_MODE } from "@/types/config";
     import { panelManager } from "../utils/panel-manager.js";
 
+    // 隐藏“横幅模式”选项，仅提供全屏与隐藏壁纸
     const wallpaperOptions: { mode: WALLPAPER_MODE; icon: string; label: I18nKey }[] = [
-        { mode: WALLPAPER_BANNER, icon: "material-symbols:image-outline", label: I18nKey.wallpaperBanner },
         { mode: WALLPAPER_FULLSCREEN, icon: "material-symbols:wallpaper", label: I18nKey.wallpaperFullscreen },
         { mode: WALLPAPER_NONE, icon: "material-symbols:hide-image-outline", label: I18nKey.wallpaperNone },
     ];
 
     let mode: WALLPAPER_MODE = $state(getStoredWallpaperMode());
+    // 若用户此前存储为“横幅模式”，统一迁移为“全屏模式”
+    if (mode === WALLPAPER_BANNER) {
+        mode = WALLPAPER_FULLSCREEN;
+        setWallpaperMode(WALLPAPER_FULLSCREEN);
+    }
 
     let currentIcon = $derived(wallpaperOptions.find(opt => opt.mode === mode)?.icon || wallpaperOptions[0].icon);
 

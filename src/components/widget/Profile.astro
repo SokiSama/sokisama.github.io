@@ -51,7 +51,7 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
                 {profileConfig.links[0].name}
             </a>}
         </div>
-        {umamiEnabled && (
+        {(umamiEnabled && umamiWebsiteId && umamiApiKey) && (
             <hr class="my-2 border-t border-dashed border-gray-300 dark:border-gray-700" />
             <div class="text-sm text-gray-500 mt-2 text-center">
                 <Icon name="fa6-solid:eye" class="inline-block mr-1 text-gray-400 text-sm align-middle" />
@@ -61,7 +61,7 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
     </div>
 </div>
 
-{umamiEnabled && (
+{(umamiEnabled && umamiWebsiteId && umamiApiKey) && (
     <script is:inline define:vars={{ umamiBaseUrl, umamiApiKey, umamiWebsiteId, umamiConfig }}>
         // 客户端统计文案生成函数
         function generateStatsText(pageViews, visits) {
@@ -70,12 +70,7 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
         
         // 获取访问量统计
         async function fetchSiteStats(isRetry = false) {
-            if (!umamiConfig.enabled || !isRetry) {
-                // isRetry is used to avoid recursive retry loop or similar logic if implemented
-            }
-            if (!umamiConfig.enabled) {
-                return;
-            }
+            if (!umamiConfig.enabled || !umamiWebsiteId) return;
             
             try {
                 // 调用全局工具获取 Umami 统计数据
@@ -99,10 +94,47 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
         }
 
         // 页面加载完成后获取统计数据
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', fetchSiteStats);
-        } else {
+        function initSiteStats() {
+            const el = document.getElementById('site-stats-display');
+            if (el) el.textContent = '统计加载中...';
             fetchSiteStats();
         }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSiteStats);
+        } else {
+            initSiteStats();
+        }
+
+        // Swup 页面切换钩子：切换后重新拉取统计
+        (function setupSwupListeners() {
+            if ((window).hasOwnProperty('_umamiSiteStatsListenerAttached')) return;
+
+            function trySetupSwup() {
+                const sw = (window).swup;
+                if (sw && sw.hooks && typeof sw.hooks.on === 'function') {
+                    sw.hooks.on('content:replace', () => {
+                        const el = document.getElementById('site-stats-display');
+                        if (el) el.textContent = '统计加载中...';
+                        fetchSiteStats();
+                    });
+                    (window)._umamiSiteStatsListenerAttached = true;
+                    return true;
+                }
+                return false;
+            }
+
+            if (!trySetupSwup()) {
+                let retry = 0;
+                const timer = setInterval(() => {
+                    if (trySetupSwup() || ++retry >= 10) {
+                        clearInterval(timer);
+                        if (retry >= 10) {
+                            window.addEventListener('popstate', () => requestAnimationFrame(initSiteStats));
+                        }
+                    }
+                }, 100);
+            }
+        })();
     </script>
 )}

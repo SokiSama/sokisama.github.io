@@ -12,15 +12,15 @@
 /* 导入 ZenMaruGothic-Medium 字体 */
 @font-face {
   font-family: "ZenMaruGothic-Medium";
-  src: url("/assets/font/ZenMaruGothic-Medium.woff2") format("woff2");
+  src: url("/assets/font/ZenMaruGothic-Medium.ttf") format("truetype");
   font-weight: 500;
   font-display: swap;
 }
 
-/* 导入 萝莉体 第二版 字体 */
+/* 导入 华文细黑 字体（全局统一使用） */
 @font-face {
-  font-family: "萝莉体 第二版";
-  src: url("/assets/font/萝莉体 第二版.woff2") format("woff2");
+  font-family: "华文细黑";
+  src: url("/assets/font/华文细黑.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

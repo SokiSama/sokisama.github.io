@@ -7,6 +7,8 @@ import { getShuffledFriendsList } from "../data/friends";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
+import Twikoo from "../components/comment/Twikoo.astro";
+import "../styles/twikoo.css";
 
 // 检查友链页面是否启用
 if (!siteConfig.featurePages.friends) {
@@ -22,8 +24,9 @@ if (!friendsPost) {
 const { Content } = await render(friendsPost);
 const friendsList = getShuffledFriendsList();
 
-// 获取所有标签
-const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
+// 已移除标签筛选，不再计算标签集合
+// 当前页面路径（用于 Twikoo 评论路径）
+const pagePath = Astro.url.pathname;
 ---
 
 <MainGridLayout title={i18n(I18nKey.friends)} description={i18n(I18nKey.friends)}>
@@ -72,23 +75,7 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 					</div>
 				</div>
 
-				<!-- 标签筛选 -->
-				<div class="filter-container flex flex-wrap gap-2">
-					<button 
-						class="filter-tag active"
-						data-tag="all"
-					>
-						{i18n(I18nKey.friendsFilterAll)}
-					</button>
-					{allTags.map(tag => (
-						<button 
-							class="filter-tag"
-							data-tag={tag}
-						>
-							{tag}
-						</button>
-					))}
-				</div>
+            <!-- 标签筛选已移除，根据需求仅保留搜索 -->
 			</div>
 
 			<!-- 友链卡片网格 -->
@@ -209,6 +196,17 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 			<Markdown class="mt-8 prose dark:prose-invert max-w-none">
 				<Content />
 			</Markdown>
+
+			<!-- 留言板：用于友链申请与交流 -->
+			<div class="card-base p-6 mt-8">
+				<h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-2">
+					{i18n(I18nKey.friends)} {"/"} 留言板
+				</h2>
+				<p class="text-black/60 dark:text-white/60 mb-4">
+					欢迎在此留言或申请友链，按格式提交即可～
+				</p>
+				<Twikoo path={pagePath} />
+			</div>
 			
 			<!-- 隐藏元素用于传递 i18n 文本到全局脚本 -->
 			<div id="friends-copy-success-text" style="display: none;">{i18n(I18nKey.friendsCopySuccess)}</div>
@@ -249,42 +247,5 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 		box-shadow: 0 0 0 3px var(--primary) / 0.1;
 	}
 	
-	/* 标签筛选按钮样式 - 与番剧页面一致 */
-	.filter-container {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-	
-	.filter-tag {
-		padding: 0.5rem 1rem;
-		border: 1px solid var(--line-divider);
-		border-radius: var(--radius-large);
-		background: var(--btn-regular-bg);
-		color: var(--btn-content);
-		font-size: 0.875rem;
-		font-weight: 500;
-		cursor: pointer;
-		transition: all 0.2s ease;
-		white-space: nowrap;
-	}
-	
-	.filter-tag:hover:not(.active) {
-		background: var(--btn-hover-bg);
-		border-color: var(--primary);
-		transform: translateY(-1px);
-	}
-	
-	.filter-tag.active {
-		background: var(--primary);
-		color: white;
-		border-color: var(--primary);
-	}
-	
-	.filter-tag.active:hover {
-		background: var(--primary) !important;
-		color: white !important;
-		border-color: var(--primary) !important;
-		transform: translateY(-1px);
-	}
+    /* 标签筛选样式已移除 */
 </style>

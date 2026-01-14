@@ -210,8 +210,14 @@ const transparentClass = shouldEnableTransparency
 <script type="module" is:inline define:vars={{navbarTransparentMode: siteConfig.banner?.navbar?.transparentMode || "semi", defaultWallpaperMode: siteConfig.wallpaperMode.defaultMode, defaultPostListLayout: siteConfig.postListLayout?.defaultMode || "list", BANNER_HEIGHT: BANNER_HEIGHT}}>
 
 	// 立即执行，在页面渲染前应用壁纸模式和布局模式，避免闪烁
-	(function() {
-		const wallpaperMode = localStorage.getItem('wallpaperMode') || defaultWallpaperMode;
+    (function() {
+        let wallpaperMode = localStorage.getItem('wallpaperMode') || defaultWallpaperMode;
+        // 桌面端强制将历史的“banner”模式映射为“fullscreen”
+        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+        if (isDesktop && wallpaperMode === 'banner') {
+            wallpaperMode = 'fullscreen';
+            localStorage.setItem('wallpaperMode', 'fullscreen');
+        }
 		const body = document.body;
 		
 		// 定义 banner 高度常量（与 constants.ts 保持一致）
@@ -221,34 +227,34 @@ const transparentClass = shouldEnableTransparency
 		// const MAIN_PANEL_OVERLAPS_BANNER_HEIGHT = 3.5;
 		
 		// 立即应用 body 类，确保首次渲染就是正确的状态
-		switch(wallpaperMode) {
-			case 'banner':
-				body.classList.add('enable-banner');
-				body.classList.remove('wallpaper-transparent', 'no-banner-mode');
-				break;
-			case 'fullscreen':
-				body.classList.remove('enable-banner');
-				body.classList.add('wallpaper-transparent', 'no-banner-mode');
-				break;
-			case 'none':
-				body.classList.remove('enable-banner', 'wallpaper-transparent');
-				body.classList.add('no-banner-mode');
-				break;
-		}
+        switch(wallpaperMode) {
+            case 'banner':
+                body.classList.add('enable-banner');
+                body.classList.remove('wallpaper-transparent', 'no-banner-mode');
+                break;
+            case 'fullscreen':
+                body.classList.remove('enable-banner');
+                body.classList.add('wallpaper-transparent', 'no-banner-mode');
+                break;
+            case 'none':
+                body.classList.remove('enable-banner', 'wallpaper-transparent');
+                body.classList.add('no-banner-mode');
+                break;
+        }
 		
 		// 立即调整主内容区域位置和布局模式（避免闪烁和位置错误）
 		// 使用 requestAnimationFrame 确保 DOM 准备好
 		requestAnimationFrame(function() {
-			const mainContent = document.querySelector('.absolute.w-full.z-30.pointer-events-none');
-			if (mainContent) {
-				if (wallpaperMode === 'banner') {
-					// 让主内容区域从banner顶部开始，这样波浪线会自然覆盖内容上部
-					mainContent.style.top = `${BANNER_HEIGHT}vh`;
-				} else {
-					// fullscreen 或 none 模式
-					mainContent.style.top = '5.5rem';
-				}
-			}
+            const mainContent = document.querySelector('.absolute.w-full.z-30.pointer-events-none');
+            if (mainContent) {
+                if (wallpaperMode === 'banner') {
+                    // 让主内容区域从banner顶部开始，这样波浪线会自然覆盖内容上部
+                    mainContent.style.top = `${BANNER_HEIGHT}vh`;
+                } else {
+                    // fullscreen 或 none 模式
+                    mainContent.style.top = '5.5rem';
+                }
+            }
 			
 			// 立即应用布局模式，避免闪烁
 			const mainGrid = document.getElementById('main-grid');
@@ -296,8 +302,13 @@ const transparentClass = shouldEnableTransparency
 		applyWallpaperMode();
 	}
 	
-	function applyWallpaperMode() {
-		var wallpaperMode = localStorage.getItem('wallpaperMode') || defaultWallpaperMode;
+    function applyWallpaperMode() {
+        var wallpaperMode = localStorage.getItem('wallpaperMode') || defaultWallpaperMode;
+        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+        if (isDesktop && wallpaperMode === 'banner') {
+            wallpaperMode = 'fullscreen';
+            localStorage.setItem('wallpaperMode', 'fullscreen');
+        }
 		var bannerWrapper = document.getElementById('banner-wrapper');
 		var fullscreenWallpaper = document.querySelector('[data-fullscreen-wallpaper]');
 		var navbar = document.getElementById('navbar');
@@ -806,7 +817,7 @@ const transparentClass = shouldEnableTransparency
                 "-right-[var(--toc-width)]",
                 {"toc-hide": siteConfig.wallpaperMode.defaultMode === "banner"}]}
             >
-                <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] max-h-[calc(100vh_-_10rem)] overflow-hidden">
+                <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] max-h-[calc(100vh_-_10rem)] overflow-y-auto">
                     <div id="toc-container" class="w-full transition-swup-fade">
                         <TOC headings={headings}></TOC>
                     </div>
