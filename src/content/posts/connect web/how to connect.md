@@ -27,13 +27,13 @@ draft: false
 
 ## 第二步：大致流程
 
-### 1. 域名：你的数字门牌号
+1. 域名：你的数字门牌号
 
      如果只是拿来玩玩，GitHub的域名就够用了。但凡你想涉及一些友链的互换，估计对方看到 .github.io、.vercel.app、netlify.app 也会敬而远之。购买一个域名，至少第一印象感觉，你是想正儿八经维护的。
 
 ### 2. 托管：服务器选在哪里？
 
-- **静态托管（免费/低门槛）**：Vercel / GitHub Pages / Netlify。
+- 静态托管（免费/低门槛）：Vercel / GitHub Pages / Netlify。
 
        这里说 Vercel，后面两个我也用过，Netlify 主要是之前高强度改 bug ，本地没有运行，就直接 push 了，导致免费的额度没了，遂转 Vercel ，免费额度足够你用了。
 
@@ -47,7 +47,7 @@ draft: false
 ### 4. 选择你的英雄
 
 - 框架（Hexo / Astro）：砂糖小站是 Astro，星铁小站是 Hexo，都是纯前端无后端
-- 主题：[Mizuki](https://github.com/matsuzaka-yuki/mizuki) （基于 Fuwai 改的）偏二次元一些（？）& [**icarus](https://github.com/imaegoo/hexo-theme-icarus)** 这个简洁一些
+- 主题：[Mizuki](https://github.com/matsuzaka-yuki/mizuki) （基于 Fuwai 改的）偏二次元一些（？）& [icarus](https://github.com/imaegoo/hexo-theme-icarus) 这个简洁一些
 
 ## 第三步：开始搭建
 
@@ -100,6 +100,8 @@ pnpm dev
 `npm install -g hexo-cli`
 
 在code ide里 ，终端输入，把 icarus 主题给下载下来
+
+
 `git submodule add https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus`
 
 cd 到 clone 的项目下面，打开 `_config.yml`，修改主题
@@ -158,7 +160,7 @@ hexo config theme icarus
 
 4. 关联远程仓库
 
-`git remote add origin [https://github.com/你的用户名/你的仓库名.git](https://github.com/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D.git)`
+`git remote add origin [https://github.com/你的用户名/你的仓库名.git]`
 
 5. 推代码
 
