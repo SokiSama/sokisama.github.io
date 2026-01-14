@@ -1,6 +1,6 @@
 ---
 title: 给群友写一份怎么从零搭建一个网站
-published: 2025-01-14
+published: 2026-01-14
 pinned: false
 description: 面向不知道谁的一个搭站教程
 tags: [Vercel,Blog]
