@@ -1,5 +1,5 @@
 ---
-title: 用 Steam 套壳启动 FF14 国服，可正常使用截图和时长统计
+title: "用 Steam 套壳启动 FF14 国服，可正常使用截图和时长统计"
 published: 2026-01-15
 pinned: false
 description: 通过套壳，使 Steam 启动国服 FF14
