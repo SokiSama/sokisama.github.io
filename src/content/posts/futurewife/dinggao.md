@@ -1,5 +1,5 @@
 ---
-title: 简单的构思了一场基于FF14主题的婚礼
+title: 构思了一场基于 FF14 主题的婚礼
 published: 2026-01-09
 pinned: false
 description: 任务已开启：永结同心绝境战

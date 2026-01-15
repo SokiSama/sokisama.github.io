@@ -58,25 +58,22 @@ const style = Astro.props.style;
 </WidgetLayout>
 
 <script>
+    const ANNOUNCEMENT_STORAGE_KEY = 'announcementClosed_v2';
+
     function closeAnnouncement() {
-        // 通过data-id属性找到整个widget-layout元素
         const widgetLayout = document.querySelector('widget-layout[data-id="announcement"]') as HTMLElement;
         if (widgetLayout) {
-            // 隐藏整个widget-layout元素
             widgetLayout.style.display = 'none';
-            // 保存关闭状态到localStorage
-            localStorage.setItem('announcementClosed', 'true');
+            localStorage.setItem(ANNOUNCEMENT_STORAGE_KEY, 'true');
         }
     }
 
-    // 页面加载时检查是否已关闭
     document.addEventListener('DOMContentLoaded', function() {
         const widgetLayout = document.querySelector('widget-layout[data-id="announcement"]') as HTMLElement;
-        if (widgetLayout && localStorage.getItem('announcementClosed') === 'true') {
+        if (widgetLayout && localStorage.getItem(ANNOUNCEMENT_STORAGE_KEY) === 'true') {
             widgetLayout.style.display = 'none';
         }
     });
 
-    // 使公告栏函数全局可用
     window.closeAnnouncement = closeAnnouncement;
 </script>

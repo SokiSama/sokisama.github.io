@@ -128,7 +128,11 @@ const mainPanelTop =
 
 // 当默认模式不是 banner 时，主内容区域应该始终从顶栏下面开始
 const finalMainPanelTop =
-	siteConfig.wallpaperMode.defaultMode === "banner" ? mainPanelTop : "5.5rem";
+	siteConfig.wallpaperMode.defaultMode === "banner"
+		? mainPanelTop
+		: isHomePage
+			? "100vh"
+			: "5.5rem";
 
 // 检查侧边栏是否启用，动态调整网格布局
 // 响应式配置：不同设备上的侧边栏显示状态
@@ -207,11 +211,15 @@ const transparentClass = shouldEnableTransparency
 
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle} postSlug={postSlug}>
 
-<script type="module" is:inline define:vars={{navbarTransparentMode: siteConfig.banner?.navbar?.transparentMode || "semi", defaultWallpaperMode: siteConfig.wallpaperMode.defaultMode, defaultPostListLayout: siteConfig.postListLayout?.defaultMode || "list", BANNER_HEIGHT: BANNER_HEIGHT}}>
+<script type="module" is:inline define:vars={{navbarTransparentMode: siteConfig.banner?.navbar?.transparentMode || "semi", defaultWallpaperMode: siteConfig.wallpaperMode.defaultMode, defaultPostListLayout: siteConfig.postListLayout?.defaultMode || "list", BANNER_HEIGHT: BANNER_HEIGHT, isHomePage}}>
 
 	// 立即执行，在页面渲染前应用壁纸模式和布局模式，避免闪烁
     (function() {
         let wallpaperMode = localStorage.getItem('wallpaperMode') || defaultWallpaperMode;
+		if (isHomePage) {
+			wallpaperMode = 'fullscreen';
+			localStorage.setItem('wallpaperMode', 'fullscreen');
+		}
         // 桌面端强制将历史的“banner”模式映射为“fullscreen”
         const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
         if (isDesktop && wallpaperMode === 'banner') {
@@ -252,7 +260,7 @@ const transparentClass = shouldEnableTransparency
                     mainContent.style.top = `${BANNER_HEIGHT}vh`;
                 } else {
                     // fullscreen 或 none 模式
-                    mainContent.style.top = '5.5rem';
+                    mainContent.style.top = isHomePage && wallpaperMode === 'fullscreen' ? '100vh' : '5.5rem';
                 }
             }
 			
@@ -305,6 +313,10 @@ const transparentClass = shouldEnableTransparency
     function applyWallpaperMode() {
         var wallpaperMode = localStorage.getItem('wallpaperMode') || defaultWallpaperMode;
         const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+		if (isHomePage) {
+			wallpaperMode = 'fullscreen';
+			localStorage.setItem('wallpaperMode', 'fullscreen');
+		}
         if (isDesktop && wallpaperMode === 'banner') {
             wallpaperMode = 'fullscreen';
             localStorage.setItem('wallpaperMode', 'fullscreen');
@@ -379,9 +391,8 @@ const transparentClass = shouldEnableTransparency
 				body.classList.remove('enable-banner');
 				// 强制重排
 				forceReflow();
-				// 移除内联样式，让CSS完全接管
 				if (mainContent) {
-					mainContent.style.removeProperty('top');
+					mainContent.style.top = isHomePage ? '100vh' : '5.5rem';
 				}
 				// 再添加wallpaper-transparent和no-banner-mode类
 				body.classList.add('wallpaper-transparent');
@@ -429,7 +440,8 @@ const transparentClass = shouldEnableTransparency
 				forceReflow();
 				break;
 		}
-	}
+    }
+
 	
 	// 监听壁纸模式变化，立即应用（不重载页面）
 	window.addEventListener('wallpaper-mode-change', function(_event) {

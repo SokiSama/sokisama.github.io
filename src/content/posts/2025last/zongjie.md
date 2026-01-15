@@ -1,5 +1,5 @@
 ---
-title: 闲下来写一点年末的碎碎念
+title: 2025 年终总结
 published: 2025-12-23
 pinned: false
 description: 年末将至，写点什么。

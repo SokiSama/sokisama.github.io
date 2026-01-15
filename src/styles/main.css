@@ -17,10 +17,10 @@
   font-display: swap;
 }
 
-/* 导入 华文细黑 字体（全局统一使用） */
+/* 导入 PingFangHK-Regular 字体（全局统一使用） */
 @font-face {
-  font-family: "华文细黑";
-  src: url("/assets/font/华文细黑.ttf") format("truetype");
+  font-family: "PingFangHK-Regular";
+  src: url("/assets/font/PingFangHK-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

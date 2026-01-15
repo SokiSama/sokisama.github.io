@@ -177,16 +177,16 @@ export const siteConfig: SiteConfig = {
 		asciiFont: {
 			// 英文字体 - 优先级最高
 			// 指定为英文字体则无论字体包含多大范围，都只会保留 ASCII 字符子集
-			fontFamily: "华文细黑",
+			fontFamily: "PingFangHK-Regular",
 			fontWeight: "400",
-			localFonts: ["华文细黑.ttf"],
+			localFonts: ["PingFangHK-Regular.otf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 		cjkFont: {
 			// 中日韩字体 - 作为回退字体
-			fontFamily: "华文细黑",
+			fontFamily: "PingFangHK-Regular",
 			fontWeight: "500",
-			localFonts: ["华文细黑.ttf"],
+			localFonts: ["PingFangHK-Regular.otf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 	},
@@ -209,34 +209,41 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 };
 
 export const navBarConfig: NavBarConfig = {
-    links: [
-        LinkPreset.Home,
-        LinkPreset.Archive,
-        // 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
-        // 已移除“Links/链接”下拉项
-        // 将“我的”下拉拆分为独立导航项
-        {
-            name: "追番",
-            url: "/anime/",
-            icon: "material-symbols:movie",
-        },
-        {
-            name: "我的设备",
-            url: "/devices/",
-            icon: "material-symbols:devices",
-            external: false,
-        },
-        // 将“关于/友链”下拉拆分为独立导航项
-        {
-            name: "关于",
-            url: "/about/",
-            icon: "material-symbols:person",
-        },
-        {
-            name: "友链",
-            url: "/friends/",
-            icon: "material-symbols:group",
-        },
+	links: [
+		LinkPreset.Home,
+		LinkPreset.Archive,
+		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
+		// 已移除“Links/链接”下拉项
+		// 将“我的”下拉拆分为独立导航项
+		{
+			name: "追番",
+			url: "/anime/",
+			icon: "material-symbols:movie",
+		},
+		{
+			name: "我的设备",
+			url: "/devices/",
+			icon: "material-symbols:devices",
+			external: false,
+		},
+		// 将“关于/友链”下拉拆分为独立导航项
+		{
+			name: "关于",
+			url: "/about/",
+			icon: "material-symbols:person",
+		},
+		{
+			name: "友链",
+			url: "/friends/",
+			icon: "material-symbols:group",
+		},
+		{
+			name: "跃迁",
+			url: "https://soki.moe",
+			icon: "material-symbols:rocket-launch",
+			external: true,
+			showExternalIcon: false,
+		},
 		// 已移除“Others/其他”下拉项
 	],
 };
@@ -322,8 +329,8 @@ export const shareConfig: ShareConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "公告", // 公告标题
-	content: "欢迎来到我的博客，这里是分享个人生活与并不高级的技术的地方。", // 公告内容
+	title: "心语", // 公告标题
+	content: "   如同月下彼岸花，在这里，它承载着 “我” 存在的证明.", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
@@ -556,7 +563,16 @@ export const pioConfig: import("./types/config").PioConfig = {
 };
 
 // 导出所有配置的统一接口
-export const widgetConfigs = {
+export const widgetConfigs: {
+	profile: ProfileConfig;
+	announcement: AnnouncementConfig;
+	music: MusicPlayerConfig;
+	layout: SidebarLayoutConfig;
+	sakura: SakuraConfig;
+	fullscreenWallpaper: FullscreenWallpaperConfig;
+	pio: import("./types/config").PioConfig;
+	share: ShareConfig;
+} = {
 	profile: profileConfig,
 	announcement: announcementConfig,
 	music: musicPlayerConfig,
@@ -565,9 +581,14 @@ export const widgetConfigs = {
 	fullscreenWallpaper: fullscreenWallpaperConfig,
 	pio: pioConfig, // 添加 pio 配置
 	share: shareConfig, // 添加分享配置
-} as const;
+};
 
-export const umamiConfig = {
+export const umamiConfig: {
+	enabled: boolean;
+	apiKey: string;
+	baseUrl: string;
+	scripts: string;
+} = {
 	// 仅当提供了有效的 API Key 时启用统计，避免在本地或未配置时出现“统计不可用”提示
 	enabled: Boolean(import.meta.env.UMAMI_API_KEY),
 	// API 密钥只从环境变量读取，未配置则为空字符串（不再使用占位符）
@@ -576,4 +597,5 @@ export const umamiConfig = {
 	scripts: `
 <script defer src="https://cloud.umami.is/script.js" data-website-id="d8f7888b-e346-405c-a000-8bd7d230f108"></script>
   `.trim(), // 上面填你要插入的Script,不用再去Layout中插入
-} as const;
+};
+

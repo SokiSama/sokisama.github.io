@@ -685,7 +685,13 @@ export const skillsData: Skill[] = [
 ];
 
 // Get skill statistics
-export const getSkillStats = () => {
+export type SkillStats = {
+	total: number;
+	byLevel: Record<Skill["level"], number>;
+	byCategory: Record<Skill["category"], number>;
+};
+
+export const getSkillStats: () => SkillStats = (): SkillStats => {
 	const total = skillsData.length;
 	const byLevel = {
 		beginner: skillsData.filter((s) => s.level === "beginner").length,
@@ -706,7 +712,9 @@ export const getSkillStats = () => {
 };
 
 // Get skills by category
-export const getSkillsByCategory = (category?: string) => {
+export const getSkillsByCategory: (category?: string) => Skill[] = (
+	category?: string,
+): Skill[] => {
 	if (!category || category === "all") {
 		return skillsData;
 	}
@@ -714,14 +722,16 @@ export const getSkillsByCategory = (category?: string) => {
 };
 
 // Get advanced skills
-export const getAdvancedSkills = () => {
+export const getAdvancedSkills: () => Skill[] = (): Skill[] => {
 	return skillsData.filter(
 		(s) => s.level === "advanced" || s.level === "expert",
 	);
 };
 
 // Calculate total years of experience
-export const getTotalExperience = () => {
+export type TotalExperience = { years: number; months: number };
+
+export const getTotalExperience: () => TotalExperience = (): TotalExperience => {
 	const totalMonths = skillsData.reduce((total, skill) => {
 		return total + skill.experience.years * 12 + skill.experience.months;
 	}, 0);
