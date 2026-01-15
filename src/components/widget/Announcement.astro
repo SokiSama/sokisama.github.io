@@ -77,3 +77,13 @@ const style = Astro.props.style;
 
     window.closeAnnouncement = closeAnnouncement;
 </script>
+
+<style>
+	widget-layout[data-id="announcement"] a.btn-regular[href="/about/"] {
+		display: none;
+	}
+
+	widget-layout[data-id="announcement"] button[onclick="closeAnnouncement()"] {
+		display: none;
+	}
+</style>

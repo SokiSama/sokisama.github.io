@@ -12,7 +12,7 @@
         setWallpaperMode,
     } from "@utils/setting-utils";
     import type { WALLPAPER_MODE } from "@/types/config";
-    import { panelManager } from "../utils/panel-manager.js";
+    import { panelManager } from "../utils/panel-manager";
 
     // 隐藏“横幅模式”选项，仅提供全屏与隐藏壁纸
     const wallpaperOptions: { mode: WALLPAPER_MODE; icon: string; label: I18nKey }[] = [

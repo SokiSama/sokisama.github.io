@@ -512,7 +512,7 @@ function disableAnimation() {
 	async function initializePanelManager() {
 		try {
 			// @ts-ignore
-			const { panelManager } = await import("../utils/panel-manager.js");
+			const { panelManager } = await import("../utils/panel-manager");
 
 			function setClickOutsideToClose(panel: string, ignores: string[]) {
 				document.addEventListener("click", async (event) => {
@@ -1282,7 +1282,7 @@ function disableAnimation() {
 			showBanner();
 			// 初始化面板管理器
 			try {
-				await import("../utils/panel-manager.js");
+				await import("../utils/panel-manager");
 				console.log("Panel manager initialized");
 			} catch (error) {
 				console.error("Failed to initialize panel manager:", error);
@@ -1293,7 +1293,7 @@ function disableAnimation() {
 		// 页面已经加载完成，立即初始化面板管理器
 		(async () => {
 			try {
-				await import("../utils/panel-manager.js");
+				await import("../utils/panel-manager");
 				console.log("Panel manager initialized");
 			} catch (error) {
 				console.error("Failed to initialize panel manager:", error);
