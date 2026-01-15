@@ -174,8 +174,9 @@ if (siteConfig.font) {
 >
 	<head>
 		<!-- 第三方分析脚本 - 延迟加载优化 -->
-		<script is:inline>
+		<script is:inline define:vars={{ enableAnalytics: import.meta.env.PROD }}>
 			// 使用 requestIdleCallback 延迟加载第三方脚本
+			if (enableAnalytics) {
 			function loadAnalytics() {
 				// Google Tag Manager
 				(function (w, d, s, l, i) {
@@ -213,6 +214,7 @@ if (siteConfig.font) {
 				requestIdleCallback(loadAnalytics, { timeout: 3000 });
 			} else {
 				setTimeout(loadAnalytics, 3000);
+			}
 			}
 		</script>
 

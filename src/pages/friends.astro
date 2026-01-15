@@ -53,7 +53,7 @@ const pagePath = Astro.url.pathname;
 			</div>
 
 			<!-- 搜索和筛选栏 -->
-			<div class="mb-6 space-y-3">
+			<div id="friends-search-bar" class="mb-6 space-y-3">
 				<!-- 搜索框 -->
 				<div class="w-full">
 					<div class="relative">
@@ -132,7 +132,7 @@ const pagePath = Astro.url.pathname;
 							<!-- 标签 -->
 							<div class="flex flex-wrap gap-2 mb-4">
 								{item.tags.map(tag => (
-									<span class="px-2 py-1 text-xs rounded-md 
+									<span class="friend-tag px-2 py-1 text-xs rounded-md 
 													bg-[var(--primary)]/10 text-[var(--primary)] 
 													font-medium">
 										{tag}
@@ -244,7 +244,15 @@ const pagePath = Astro.url.pathname;
 
 	/* 搜索框焦点效果 */
 	#friend-search:focus {
-		box-shadow: 0 0 0 3px var(--primary) / 0.1;
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent);
+	}
+
+	.friend-tag {
+		display: none;
+	}
+
+	#friends-search-bar {
+		display: none;
 	}
 	
     /* 标签筛选样式已移除 */
