@@ -2,7 +2,7 @@
 title: 在 blog 页面添加文章统计数据
 published: 2025-10-15
 updated: 2025-10-15
-description: '实现 blog 内文章数据统计'
+description: '实现 blog 内文章数据统计 （已作废）'
 image: "./cover.jpg"
 tags: [统计, 博客,]
 category: '教程'

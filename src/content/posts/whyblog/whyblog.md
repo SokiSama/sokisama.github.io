@@ -1,7 +1,7 @@
 ---
 title: 我为什么要写博客
 published: 2025-10-08
-pinned: true
+pinned: false
 description: 关于我为什么要写博客的一些思考.
 tags: [博客]
 category: 心得

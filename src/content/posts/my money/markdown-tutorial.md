@@ -1,5 +1,5 @@
 ---
-title: 记录一些我收藏的
+title: 星尘收集簿
 published: 2025-10-12
 pinned: true
 description: 看看我的钱都花到哪里了.
@@ -12,8 +12,8 @@ sourceLink: ""
 draft: false
 ---
 
-> 不定时更新
->
+## 不定时更新
+
 
 # 实体版galgame
 
@@ -74,8 +74,15 @@ Happy Sugar Life
 
 我推的孩子
 
+未聞花名
+
+我們不可能成為戀人！絕對不行。
+
+Lycoris Recoil 莉可麗絲 
+
 # 电子设备
 
+> **基本都是收藏吃灰，常用设备未列出**
 
 iPhone 8 Plus 
 
@@ -92,6 +99,8 @@ Xperia SO-04E 初音未来限定款
 Sharp AQUOS R6 
 
 Smartisan Phone M1L
+
+Samsung Galaxy S20
 
 Nokia Lumia 900
 

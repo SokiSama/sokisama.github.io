@@ -155,9 +155,9 @@ export const siteConfig: SiteConfig = {
 	},
 	toc: {
 		enable: true, // 启用目录功能
-		mode: "sidebar", // 目录显示模式："float" 悬浮按钮模式，"sidebar" 侧边栏模式
+		mode: "float", // 目录显示模式："float" 悬浮按钮模式，"sidebar" 侧边栏模式
 		depth: 2, // 目录深度，1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推
-		useJapaneseBadge: true, // 使用日语假名标记（あいうえお...）代替数字，开启后会将 1、2、3... 改为 あ、い、う...
+		useJapaneseBadge: false, // 使用日语假名标记（あいうえお...）代替数字，开启后会将 1、2、3... 改为 あ、い、う...
 	},
 	showCoverInContent: true, // 在文章内容页显示文章封面
 	generateOgImages: false, // 启用生成OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
@@ -330,10 +330,10 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "心语", // 公告标题
-	content: "   如同月下彼岸花，在这里，它承载着 “我” 存在的证明.", // 公告内容
-	closable: true, // 允许用户关闭公告
+	content: "如同月下彼岸花，在这里，它承载着 “我” 存在的证明.", // 公告内容
+	closable: false, // 允许用户关闭公告
 	link: {
-		enable: true, // 启用链接
+		enable: false, // 启用链接
 		text: "Learn More", // 链接文本
 		url: "/about/", // 链接 URL
 		external: false, // 内部链接
@@ -440,7 +440,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 响应式配置
 			responsive: {
 				// 折叠阈值：当标签数量超过20个时自动折叠
-				collapseThreshold: 20,
+				collapseThreshold: 5,
 			},
 		},
 		{
